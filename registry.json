@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "component",
+  "homepage": "http://localhost:3000",
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "A Simple UI button component",
+      "files": [
+        {
+          "path": "src/components/ui/Button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

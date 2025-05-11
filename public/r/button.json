@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button",
+  "type": "registry:ui",
+  "title": "Button",
+  "description": "A Simple UI button component",
+  "files": [
+    {
+      "path": "src/components/ui/Button.tsx",
+      "content": "'use client'\r\n\r\nimport React from 'react'\r\n\r\nconst Button = () => {\r\n  return (\r\n    <div>\r\n      <button \r\n        className='bg-red-500 rounded-md px-4 py-2' \r\n        onClick={() => {\r\n          const body = document.querySelector('body');\r\n          if (body) {\r\n            body.style.backgroundColor = 'red';\r\n          }\r\n        }}\r\n      >\r\n        Click\r\n      </button>\r\n    </div>\r\n  )\r\n}\r\n\r\nexport default Button\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}
