@@ -1,4 +1,5 @@
 import DarkModeToggle from "@/components/DarkModeToggle";
+import { Toggle } from "@/registry/components/ui/toggle";
 
 export default function Home() {
   return (
@@ -13,15 +14,17 @@ export default function Home() {
             Primary
           </div>
           <div className='bg-secondary text-secondary-foreground p-4 rounded-md'>
-            Primary
+            Secondary
           </div>
           <div className='bg-muted text-muted-foreground p-4 rounded-md'>
-            Primary
+            Muted
           </div>
           <div className='bg-accent text-accent-foreground p-4 rounded-md'>
-            Primary
+            Accent
           </div>
         </div>
+
+        <Toggle />
 
       </div>
     </div>
