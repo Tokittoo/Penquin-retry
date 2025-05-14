@@ -10,7 +10,7 @@
       "description": "A Simple UI button component",
       "files": [
         {
-          "path": "src/registry/components/ui/Button.tsx",
+          "path": "src/registry/components/ui/button.tsx",
           "type": "registry:ui"
         }
       ],
@@ -32,6 +32,25 @@
       ],
       "dependencies": [
         "motion"
+      ],
+      "author": "Saad"
+    },
+    {
+      "name": "darkModeToggle",
+      "type": "registry:ui",
+      "title": "Dark Mode Toggle",
+      "description": "Dark Mode Toggle Button",
+      "files": [
+        {
+          "path": "src/registry/components/ui/darkModeToggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@tabler/icons-react"
+      ],
+      "registryDependencies": [
+        "button"
       ],
       "author": "Saad"
     }
