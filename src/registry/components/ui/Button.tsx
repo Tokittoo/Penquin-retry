@@ -5,15 +5,15 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
-  'flex items-center justify-center gap-2 text-nowrap text-sm rounded-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow-sm cursor-pointer',
+  'flex items-center justify-center gap-2 text-nowrap text-sm rounded-md transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow-xs cursor-pointer',
   {
     variants: {
       variant: {
-        default: 'bg-neutral-950 text-white hover:bg-neutral-950/80 dark:bg-neutral-100 dark:text-black dark:hover:bg-neutral-100/80',
-        secondary: 'bg-gray-200 text-black hover:bg-gray-200/80 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-800/80',
-        destructive: 'bg-red-700 text-white hover:bg-red-700/80',
-        outline: 'border border-gray-300 hover:bg-zinc-200 dark:border-neutral-700 dark:hover:bg-zinc-800',
-        hidden: 'hover:bg-zinc-200 dark:hover:bg-zinc-800 shadow-none'
+        default: 'bg-primary text-primary-foreground hover:bg-primary/90',
+        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/90',
+        destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+        outline: 'border border-input hover:bg-accent hover:text-accent-foreground',
+        hidden: 'hover:bg-accent hover:text-accent-foreground shadow-none'
       },
       size: {
         default: 'px-5 py-2',
