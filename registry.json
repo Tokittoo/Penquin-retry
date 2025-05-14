@@ -18,6 +18,22 @@
         "@radix-ui/react-slot"
       ],
       "author": "Saad"
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "A Simple Toggle component",
+      "files": [
+        {
+          "path": "src/registry/components/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "author": "Saad"
     }
   ]
 }
