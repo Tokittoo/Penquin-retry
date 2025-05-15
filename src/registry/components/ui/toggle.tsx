@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from 'react'
 import { cn } from '@/lib/utils'
 
@@ -22,6 +24,9 @@ const Toggle = React.forwardRef<HTMLDivElement, ToggleProps>(
       }
 
       (async () => {
+        // To fix the sudden jerk if 'isOn' is true be default
+        scope.current.style.marginLeft = !isOn ? 'auto' : 0
+
         await animate(
           scope.current,
           {
@@ -57,7 +62,13 @@ const Toggle = React.forwardRef<HTMLDivElement, ToggleProps>(
         {...props}
         onClick={toggleOn}
       >
-        <div ref={scope} className='h-5 w-5 rounded-full bg-white dark:bg-black' />
+        <div
+          ref={scope}
+          className={cn(
+            'h-5 w-5 rounded-full bg-white dark:bg-black',
+            isOn && 'ml-auto'
+          )}
+        />
       </div>
     )
   }

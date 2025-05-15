@@ -1,5 +1,4 @@
 import DarkModeToggle from "@/components/DarkModeToggle";
-import { Toggle } from "@/registry/components/ui/toggle";
 
 export default function Home() {
   return (
@@ -24,7 +23,6 @@ export default function Home() {
           </div>
         </div>
 
-        <Toggle />
 
       </div>
     </div>
