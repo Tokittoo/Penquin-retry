@@ -36,13 +36,13 @@
       "author": "Saad"
     },
     {
-      "name": "darkModeToggle",
+      "name": "dark-mode-toggle",
       "type": "registry:ui",
       "title": "Dark Mode Toggle",
       "description": "Dark Mode Toggle Button",
       "files": [
         {
-          "path": "src/registry/components/ui/darkModeToggle.tsx",
+          "path": "src/registry/components/ui/dark-mode-toggle.tsx",
           "type": "registry:ui"
         }
       ],
@@ -51,6 +51,23 @@
       ],
       "registryDependencies": [
         "button"
+      ],
+      "author": "Saad"
+    },
+    {
+      "name": "triple-toggle",
+      "type": "registry:ui",
+      "title": "Triple Toggle",
+      "description": "A toggle component with a subtoggle",
+      "files": [
+        {
+          "path": "src/registry/components/ui/triple-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@tabler/icons-react",
+        "motion"
       ],
       "author": "Saad"
     }
