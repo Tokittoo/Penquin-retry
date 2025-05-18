@@ -70,6 +70,24 @@
         "motion"
       ],
       "author": "Saad"
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "ACcordion",
+      "description": "Accordion content with dropdown content",
+      "files": [
+        {
+          "path": "src/registry/components/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-accordion",
+        "@tabler/icons-react",
+        "motion"
+      ],
+      "author": "Saad"
     }
   ]
 }
