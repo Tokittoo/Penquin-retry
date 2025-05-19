@@ -88,6 +88,26 @@
         "motion"
       ],
       "author": "Saad"
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "Alert Dialog to popup for confirming a action",
+      "files": [
+        {
+          "path": "src/registry/components/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-alert-dialog",
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "author": "Saad"
     }
   ]
 }
