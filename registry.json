@@ -108,6 +108,19 @@
         "button"
       ],
       "author": "Saad"
+    },
+    {
+      "name": "headline",
+      "type": "registry:ui",
+      "title": "Headline",
+      "description": "A gradient headline for landing pages",
+      "files": [
+        {
+          "path": "src/registry/components/ui/headline.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "author": "Saad"
     }
   ]
 }
