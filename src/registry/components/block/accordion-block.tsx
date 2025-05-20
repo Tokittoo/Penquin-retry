@@ -39,11 +39,13 @@ const AccordionBlock = ({
     animate: {
       opacity: 1,
       filter: 'blur(0px)',
+      scale: 1,
       y: 0
     },
     halt: {
       opacity: 0.5,
       filter: 'blur(10px)',
+      scale: 0.95,
       y: 100
     }
   }
@@ -74,7 +76,7 @@ const AccordionBlock = ({
         <Accordion type='single' collapsible>
           {
             accordionItems.map((item, idx) => (
-              <AccordionItem value={`item-${idx}`} key={`faq-${idx}`}>
+              <AccordionItem value={`item-${idx}`} key={`item-${idx}`}>
                 <AccordionTrigger>{item.trigger}</AccordionTrigger>
                 <AccordionContent>{item.content}</AccordionContent>
               </AccordionItem>
