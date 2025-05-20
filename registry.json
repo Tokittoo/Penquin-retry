@@ -121,6 +121,26 @@
         }
       ],
       "author": "Saad"
+    },
+    {
+      "name": "accordion-block",
+      "type": "registry:ui",
+      "title": "Accordion Block",
+      "description": "A animated accordion block",
+      "files": [
+        {
+          "path": "src/registry/components/block/accordion-block.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "headline",
+        "accordion"
+      ],
+      "author": "Saad"
     }
   ]
 }
