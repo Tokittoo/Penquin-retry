@@ -28,11 +28,9 @@ const headlineVariants = cva(
 
 export interface HeadlineProps
 extends React.HTMLAttributes<HTMLDivElement>,
-VariantProps<typeof headlineVariants> {
-  asChild?: boolean
-}
+VariantProps<typeof headlineVariants> {}
 
-const Headline = ({ className, variant, size, asChild, ...props }: HeadlineProps) => {
+const Headline = ({ className, variant, size, ...props }: HeadlineProps) => {
   return (
     <h1
       className={cn(headlineVariants({ variant, size, className }))}
