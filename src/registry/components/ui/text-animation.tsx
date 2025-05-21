@@ -15,6 +15,7 @@ interface TextAnimationProps {
   blur?: boolean,
   fade?: boolean,
   ease?: 'easeInOut' | 'easeIn' | 'easeOut',
+  direction?: 'top' | 'bottom' | 'right' | 'left'
 }
 
 const TextAnimation = ({
@@ -25,8 +26,9 @@ const TextAnimation = ({
   staggerChildren = 0.05,
   by = 'chars',
   blur = true,
-  fade = false,
-  ease = 'easeInOut'
+  fade = true,
+  ease = 'easeInOut',
+  direction = 'bottom'
 }: TextAnimationProps) => {
   const [scope, animate] = useAnimate();
   const [segments, setSegments] = React.useState<string[] | null>(null);
@@ -60,6 +62,7 @@ const TextAnimation = ({
           {
             opacity: 1,
             y: 0,
+            x: 0,
             filter: 'blur(0px)'
           },
           {
@@ -89,7 +92,9 @@ const TextAnimation = ({
           <span
             style={{
               opacity: fade ? 0 : 1,
-              transform: 'translateY(20px)',
+              transform: direction === 'bottom' ? 'translateY(20px)' :
+              direction === 'top' ? 'translateY(-20px)' :
+              direction === 'right' ? 'translateX(20px)' : 'translateX(-20px)',
               filter: blur ? 'blur(10px)' : 'none',
               display: 'inline-block',
             }}
