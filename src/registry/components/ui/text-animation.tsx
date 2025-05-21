@@ -38,7 +38,7 @@ const TextAnimation = ({
   React.useEffect(() => {
     let segments: string[] = [];
 
-    switch(by) {
+    switch (by) {
       case 'words':
         segments = text.split(' ');
         break;
@@ -56,22 +56,28 @@ const TextAnimation = ({
     setSegments(segments);
   }, [by, text]);
 
-  const start = {
-    opacity: fade ? 0 : 1,
-    y: direction === 'bottom' ? 20 : direction === 'top' ? -20 : 0,
-    x: direction === 'right' ? 20 : direction === 'left' ? -20 : 0,
-    filter: blur ? 'blur(10px)' : 'none',
-  }
+  // Animation = start -> end
+  const start = React.useMemo(() => (
+    {
+      opacity: fade ? 0 : 1,
+      y: direction === 'bottom' ? 20 : direction === 'top' ? -20 : 0,
+      x: direction === 'right' ? 20 : direction === 'left' ? -20 : 0,
+      filter: blur ? 'blur(10px)' : 'none',
+    }
+  ), [fade, direction, blur]);
 
-  const end = {
-    opacity: 1,
-    y: 0,
-    x: 0,
-    filter: 'blur(0px)'
-  }
+  // Animation = end -> start
+  const end = React.useMemo(() => (
+    {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      filter: 'blur(0px)'
+    }
+  ), [])
 
   React.useEffect(() => {
-    if(segments) {
+    if (segments) {
       const startAnimation = () => {
         animate(
           'span',
@@ -86,9 +92,9 @@ const TextAnimation = ({
 
       setTimeout(startAnimation, delay * 1000);
     }
-  }, [segments, delay])
+  }, [segments, delay, animate, animationDirection, duration, ease, start, end, staggerChildren])
 
-  if(!segments) return null;
+  if (!segments) return null;
 
   return (
     <div
