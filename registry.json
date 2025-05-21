@@ -141,6 +141,22 @@
         "accordion"
       ],
       "author": "Saad"
+    },
+    {
+      "name": "text-animation",
+      "type": "registry:ui",
+      "title": "Text Animation",
+      "description": "A component to animate text with customizations available",
+      "files": [
+        {
+          "path": "src/registry/components/ui/text-animation.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "author": "Saad"
     }
   ]
 }

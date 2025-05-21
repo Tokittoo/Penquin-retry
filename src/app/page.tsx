@@ -1,4 +1,5 @@
 import DarkModeToggle from "@/components/DarkModeToggle";
+import { TextAnimation } from "@/registry/components/ui/text-animation";
 
 export default function Home() {
   return (
@@ -23,7 +24,9 @@ export default function Home() {
           </div>
         </div>
 
-
+        <div className='max-w-4xl mx-auto'>
+          <TextAnimation text="Build your own website with ease" by={'chars'} />
+        </div>
       </div>
     </div>
   );

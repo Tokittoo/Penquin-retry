@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-animation",
+  "type": "registry:ui",
+  "title": "Text Animation",
+  "author": "Saad",
+  "description": "A component to animate text with customizations available",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "src/registry/components/ui/text-animation.tsx",
+      "content": "'use client'\r\n\r\nimport * as React from 'react'\r\nimport { useAnimate, stagger } from 'motion/react'\r\nimport { cn } from '@/lib/utils';\r\n\r\ninterface TextAnimationProps {\r\n  text: string,\r\n  className?: string,\r\n  delay?: number,\r\n  duration?: number,\r\n  startDelay?: number,\r\n  staggerChildren?: number,\r\n  by?: 'words' | 'chars' | 'lines' | 'none',\r\n  blur?: boolean,\r\n  fade?: boolean,\r\n  ease?: 'easeInOut' | 'easeIn' | 'easeOut',\r\n}\r\n\r\nconst TextAnimation = ({\r\n  text,\r\n  className,\r\n  delay = 0,\r\n  duration = 0.3,\r\n  staggerChildren = 0.05,\r\n  by = 'chars',\r\n  blur = true,\r\n  fade = false,\r\n  ease = 'easeInOut'\r\n}: TextAnimationProps) => {\r\n  const [scope, animate] = useAnimate();\r\n  const [segments, setSegments] = React.useState<string[] | null>(null);\r\n\r\n  React.useEffect(() => {\r\n    let segments: string[] = [];\r\n\r\n    switch(by) {\r\n      case 'words':\r\n        segments = text.split(' ');\r\n        break;\r\n      case 'lines':\r\n        segments = text.split('\\n');\r\n        break;\r\n      case 'none':\r\n        segments = [text];\r\n        break;\r\n      default:\r\n        segments = text.split('');\r\n        break;\r\n    }\r\n\r\n    setSegments(segments);\r\n  }, [by, text]);\r\n\r\n  React.useEffect(() => {\r\n    if(segments) {\r\n      const startAnimation = () => {\r\n        animate(\r\n          'span',\r\n          {\r\n            opacity: 1,\r\n            y: 0,\r\n            filter: 'blur(0px)'\r\n          },\r\n          {\r\n            duration: duration,\r\n            ease: ease,\r\n            delay: stagger(staggerChildren),\r\n          }\r\n        )\r\n      }\r\n\r\n      setTimeout(startAnimation, delay * 1000);\r\n    }\r\n  }, [segments, delay])\r\n\r\n  if(!segments) return null;\r\n\r\n  return (\r\n    <div\r\n      ref={scope}\r\n      className={cn(\r\n        'max-w-4xl mx-auto font-bold text-4xl whitespace-pre-wrap',\r\n        className\r\n      )}\r\n    >\r\n      {\r\n        segments.map((segment, idx) => (\r\n          <span\r\n            style={{\r\n              opacity: fade ? 0 : 1,\r\n              transform: 'translateY(20px)',\r\n              filter: blur ? 'blur(10px)' : 'none',\r\n              display: 'inline-block',\r\n            }}\r\n            // custom styles for different values of by to display the spaces\r\n            className={cn(\r\n              by === 'lines' ? 'block' : 'inline-block whitespace-pre',\r\n              by === 'words' && 'mx-1',\r\n            )}\r\n            key={idx}\r\n          >\r\n            {segment}\r\n          </span>\r\n        ))\r\n      }\r\n    </div>\r\n  )\r\n}\r\n\r\nexport { TextAnimation }",
+      "type": "registry:ui"
+    }
+  ]
+}
