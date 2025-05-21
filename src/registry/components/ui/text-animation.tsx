@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { useAnimate, stagger } from 'motion/react'
+import { useAnimate, stagger, motion } from 'motion/react'
 import { cn } from '@/lib/utils';
 
 interface TextAnimationProps {
@@ -15,7 +15,8 @@ interface TextAnimationProps {
   blur?: boolean,
   fade?: boolean,
   ease?: 'easeInOut' | 'easeIn' | 'easeOut',
-  direction?: 'top' | 'bottom' | 'right' | 'left'
+  direction?: 'top' | 'bottom' | 'right' | 'left',
+  animationDirection?: 'default' | 'reverse'
 }
 
 const TextAnimation = ({
@@ -28,7 +29,8 @@ const TextAnimation = ({
   blur = true,
   fade = true,
   ease = 'easeInOut',
-  direction = 'bottom'
+  direction = 'bottom',
+  animationDirection = 'default'
 }: TextAnimationProps) => {
   const [scope, animate] = useAnimate();
   const [segments, setSegments] = React.useState<string[] | null>(null);
@@ -54,17 +56,26 @@ const TextAnimation = ({
     setSegments(segments);
   }, [by, text]);
 
+  const start = {
+    opacity: fade ? 0 : 1,
+    y: direction === 'bottom' ? 20 : direction === 'top' ? -20 : 0,
+    x: direction === 'right' ? 20 : direction === 'left' ? -20 : 0,
+    filter: blur ? 'blur(10px)' : 'none',
+  }
+
+  const end = {
+    opacity: 1,
+    y: 0,
+    x: 0,
+    filter: 'blur(0px)'
+  }
+
   React.useEffect(() => {
     if(segments) {
       const startAnimation = () => {
         animate(
           'span',
-          {
-            opacity: 1,
-            y: 0,
-            x: 0,
-            filter: 'blur(0px)'
-          },
+          animationDirection === 'default' ? end : start,
           {
             duration: duration,
             ease: ease,
@@ -89,24 +100,18 @@ const TextAnimation = ({
     >
       {
         segments.map((segment, idx) => (
-          <span
-            style={{
-              opacity: fade ? 0 : 1,
-              transform: direction === 'bottom' ? 'translateY(20px)' :
-              direction === 'top' ? 'translateY(-20px)' :
-              direction === 'right' ? 'translateX(20px)' : 'translateX(-20px)',
-              filter: blur ? 'blur(10px)' : 'none',
-              display: 'inline-block',
-            }}
+          <motion.span
+            initial={animationDirection === 'default' ? start : end}
             // custom styles for different values of by to display the spaces
             className={cn(
+              'inline-block',
               by === 'lines' ? 'block' : 'inline-block whitespace-pre',
               by === 'words' && 'mx-1',
             )}
             key={idx}
           >
             {segment}
-          </span>
+          </motion.span>
         ))
       }
     </div>
