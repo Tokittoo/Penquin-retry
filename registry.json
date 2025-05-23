@@ -157,6 +157,21 @@
         "motion"
       ],
       "author": "Saad"
+    },
+    {
+      "name": "animated-search-input",
+      "type": "registry:ui",
+      "title": "Animated Search Input",
+      "description": "A Input field ideal for search inputs with aniamted placeholders",
+      "files": [
+        {
+          "path": "src/registry/components/ui/animated-search-input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ]
     }
   ]
 }
