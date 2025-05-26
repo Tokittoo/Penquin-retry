@@ -3,6 +3,6 @@ import { docs } from '@/../.source';
 import { loader } from 'fumadocs-core/source';
 
 export const source = loader({
-  baseUrl: '/components',
+  baseUrl: '/docs',
   source: docs.toFumadocsSource(),
 });

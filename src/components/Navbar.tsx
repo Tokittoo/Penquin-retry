@@ -1,0 +1,47 @@
+'use client'
+
+import React, { useState } from 'react'
+import DarkModeToggle from './DarkModeToggle'
+import Image from 'next/image'
+import { LargeSearchToggle } from 'fumadocs-ui/components/layout/search-toggle'
+import { IconBrandX } from '@tabler/icons-react'
+import Link from 'next/link'
+import { FaGithub, FaXTwitter } from 'react-icons/fa6';
+
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className='w-full h-16 flex'>
+      <div className='fixed w-full inset-x-0 dark:bg-black bg-white top-0 z-50 flex justify-between items-center px-20 py-4'>
+        <div className='flex'>
+          <div className='flex items-center gap-2'>
+            <Image
+              src={'/logo.png'}
+              height={30}
+              width={30}
+              alt='Logo'
+              // className='invert'
+              className='rounded-md invert dark:invert-0'
+            />
+            <h2 className='text-xl font-sans font-bold tracking-tight'>Vink UI</h2>
+          </div>
+          <ul className='flex items-center gap-2 mx-8 text-sm text-muted-foreground'>
+            <li>Docs</li>
+            <li>Components</li>
+            <li>Blocks</li>
+            <li>Templates</li>
+          </ul>
+        </div>
+        <div className='flex items-center gap-2'>
+          <LargeSearchToggle className='max-md:hidden bg-secondary/90 w-52 hover:text-white/80 hover:bg-secondary' />
+          <Link href={'https://github.com/M-SaaD-H/vink-ui'} target={'_blank'} className='p-2 rounded-full cursor-pointer'><FaGithub size={18} /></Link>
+          <Link href={'https://x.com/_MSaaDH'} target={'_blank'} className='p-2 rounded-full cursor-pointer'><FaXTwitter size={18} /></Link>
+          <DarkModeToggle />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Navbar
