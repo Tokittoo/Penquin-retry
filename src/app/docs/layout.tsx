@@ -7,7 +7,7 @@ import Navbar from '@/components/Navbar';
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div className='mx-18'>
-      <DocsLayout tree={source.pageTree} {...baseOptions} sidebar={{ collapsible: false }} nav={{ component: <Navbar /> }} >
+      <DocsLayout tree={source.pageTree} {...baseOptions} sidebar={{ collapsible: false }}>
         {children}
       </DocsLayout>
     </div>
