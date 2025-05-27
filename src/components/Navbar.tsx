@@ -26,7 +26,7 @@ const navItems = [
 
 const Navbar = () => {
   return (
-    <div className='fixed w-full inset-x-0 dark:bg-black bg-white top-0 z-50 flex justify-between items-center px-20 py-4'>
+    <div className='fixed w-full inset-x-0 dark:bg-black bg-white top-0 z-50 flex justify-between items-center md:px-20 px-8 py-4'>
       <div className='flex'>
         <div className='flex items-center gap-2'>
           <Image
@@ -39,10 +39,10 @@ const Navbar = () => {
           />
           <h2 className='text-xl font-sans font-bold tracking-tight'>Vink</h2>
         </div>
-        <ul className='flex items-center gap-2 mx-8 text-sm text-muted-foreground'>
+        <ul className='hidden md:flex items-center gap-2 mx-8'>
           {
             navItems.map(l => (
-              <li key={l.name}>
+              <li key={l.name} className='text-sm text-muted-foreground hover:text-white transition-colors'>
                 <Link href={l.href}>{l.name}</Link>
               </li>
             ))

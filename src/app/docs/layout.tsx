@@ -6,9 +6,18 @@ import Navbar from '@/components/Navbar';
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className='mx-18'>
-      <DocsLayout tree={source.pageTree} {...baseOptions} sidebar={{ collapsible: false }}>
-        {children}
+    <div className='max-w-8xl mx-auto'>
+      <DocsLayout 
+        tree={source.pageTree} 
+        {...baseOptions} 
+        sidebar={{ 
+          collapsible: false, 
+          className: 'h-[calc(100vh-4rem)] top-16' 
+        }} 
+      >
+        <div className='flex md:pt-16 pt-4'>
+          {children}
+        </div>
       </DocsLayout>
     </div>
   );
