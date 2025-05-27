@@ -2,7 +2,6 @@ import { source } from '@/lib/source';
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import type { ReactNode } from 'react';
 import { baseOptions } from '@/app/layout.config';
-import Navbar from '@/components/Navbar';
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -15,7 +14,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           className: 'h-[calc(100vh-4rem)] top-16' 
         }} 
       >
-        <div className='flex md:pt-16 pt-4'>
+        <div className='flex'>
           {children}
         </div>
       </DocsLayout>
