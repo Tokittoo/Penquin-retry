@@ -1,6 +1,4 @@
-'use client'
 import DarkModeToggle from "@/components/DarkModeToggle";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/registry/components/ui/accordion"
 
 export default function Home() {
   return (
@@ -24,28 +22,6 @@ export default function Home() {
             Accent
           </div>
         </div>
-
-  <Accordion type="single" collapsible className="w-full">
-    <AccordionItem value="item-1">
-      <AccordionTrigger>Is it really that simple?</AccordionTrigger>
-      <AccordionContent>
-        Yes. Yes it is. No magic tricks, no hidden complexity. Just pure, unadulterated accordion goodness.
-      </AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-2">
-      <AccordionTrigger>Can I customize it?</AccordionTrigger>
-      <AccordionContent>
-        Absolutely! It's like a chameleon, but for your UI. Change colors, sizes, animations - it's all fair game.
-      </AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-3">
-      <AccordionTrigger>What about accessibility?</AccordionTrigger>
-      <AccordionContent>
-        Built-in keyboard navigation, ARIA attributes, and screen reader support. We've got your back, and your users' too.
-      </AccordionContent>
-    </AccordionItem>
-  </Accordion>
-
       </div>
     </div>
   );
