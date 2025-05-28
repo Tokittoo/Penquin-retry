@@ -11,7 +11,7 @@ The Accordion Block - because sometimes your FAQ section needs to look like it w
 <ComponentShowcase component={
   <AccordionBlock
     className="scale-60"
-    title="Frequently Asked Questions"
+    title=<>Frequently<br />Asked<br />Questions</>
     accordionItems={[
       {
         trigger: "Is it really that simple?",
@@ -33,7 +33,7 @@ code={`import AccordionBlock from "@/components/block/accordion-block"
 export function AccordionBlockDemo() {
   return (
     <AccordionBlock
-      title="Frequently Asked Questions"
+      title=<>Frequently<br />Asked<br />Questions</>
       accordionItems={[
         {
           trigger: "Is it really that simple?",
