@@ -15,12 +15,12 @@ const navItems = [
     href: '/docs/components'
   },
   {
-    name: 'Snippets',
-    href: '/docs/snippets'
+    name: 'Blocks',
+    href: '/docs/blocks'
   },
   {
-    name: 'templates',
-    href: '/docs/templates'
+    name: 'Snippets',
+    href: '/docs/snippets'
   }
 ]
 
