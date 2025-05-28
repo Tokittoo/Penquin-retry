@@ -1,4 +1,4 @@
 {
   "title": "Components",
-  "pages": ["triple-toggle"]
+  "pages": ["toggle", "triple-toggle"]
 }
