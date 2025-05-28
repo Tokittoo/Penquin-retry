@@ -55,7 +55,7 @@ const AccordionBlock = ({
       initial={false}
       animate={startAnimation ? 'animate' : 'halt'}
       className={cn(
-        'flex flex-col md:flex-row md:gap-16 gap-8 relative w-[70%] mx-auto my-18',
+        'flex flex-col md:flex-row md:gap-16 gap-8 relative md:w-[70%] w-[90%] mx-auto my-18',
         className
       )}
     >
@@ -73,7 +73,7 @@ const AccordionBlock = ({
         transition={{ delay: 0.3, duration: 0.4 }}
         className='md:w-1/2 mx-auto'
       >
-        <Accordion type='single' collapsible>
+        <Accordion type='single' collapsible className='w-full'>
           {
             accordionItems.map((item, idx) => (
               <AccordionItem value={`item-${idx}`} key={`item-${idx}`}>
