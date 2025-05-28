@@ -1,0 +1,10 @@
+{
+  "title": "Vink",
+  "description": "Docs for Vinkers",
+  "pages": [
+    "---Getting Started---",
+    "...(getting-started)",
+    "---Components---",
+    "...components"
+  ]
+}

@@ -1,0 +1,107 @@
+---
+title: Installation
+---
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from 'fumadocs-ui/components/tabs'
+
+Ready to dive in? Great! Because we're not here to waste your time with endless setup instructions. A few clicks, a couple of commands, and you're ready to go. It's like IKEA furniture, but without the existential crisis of having extra screws left over.
+
+First things first, let's get Vink into your project. It's like adopting a pet, but this one won't eat your code (we hope).
+
+### Setting Up shadcn/ui
+
+Now, here's where the magic happens. We're using [shadcn/ui](https://ui.shadcn.com) for our components because, let's face it, they're the real MVPs of the UI world. We're not reinventing the wheel here – we're just making it roll smoother.
+
+1. First, initialize shadcn in your project (if you haven't already). Choose your weapon of choice:
+
+<Tabs defaultValue="npm">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="bun">bun</TabsTrigger>
+  </TabsList>
+  <TabsContent value="npm">
+    ```bash
+    npx shadcn@latest init
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn dlx shadcn@latest init
+    ```
+  </TabsContent>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm dlx shadcn@latest init
+    ```
+  </TabsContent>
+  <TabsContent value="bun">
+    ```bash
+    bunx --bun shadcn@latest init
+    ```
+  </TabsContent>
+</Tabs>
+
+When prompted, choose your preferences. We recommend:
+- Style: Default
+- Base color: Slate
+- CSS variables: Yes
+- Tailwind CSS: Yes
+- Components directory: @/components
+- Utils directory: @/lib/utils
+
+We keep it simple with sensible defaults, but feel free to customize if you're feeling fancy!
+
+2. Now, let's add some components. Here's a starter pack (choose your package manager):
+
+<Tabs defaultValue="npm">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="bun">bun</TabsTrigger>
+  </TabsList>
+  <TabsContent value="npm">
+    ```bash
+    npx shadcn@latest add button
+    npx shadcn@latest add card
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn dlx shadcn@latest add button
+    yarn dlx shadcn@latest add card
+    ```
+  </TabsContent>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm dlx shadcn@latest add button
+    pnpm dlx shadcn@latest add card
+    ```
+  </TabsContent>
+  <TabsContent value="bun">
+    ```bash
+    bunx shadcn@latest add button
+    bunx shadcn@latest add card
+    ```
+  </TabsContent>
+</Tabs>
+
+### Next Steps
+
+Now that you've got everything set up, you can:
+1. Start using Vink's utility functions
+2. Customize your shadcn components
+3. Build something amazing
+4. And do whatever you want! (We're not your parents, after all 😉)
+
+Remember: With great power comes great responsibility (and probably some debugging). But don't worry, we've got your back.
+
+### Need Help?
+
+Stuck? Confused? Having an existential crisis about your component structure? Don't worry, we've all been there. Check out:
+- [shadcn/ui documentation](https://ui.shadcn.com) (because they make UI magic while we cry over CSS.)
+- Our documentation (you're in them, so clearly elite)
+- Me (because I definitely know what I’m doing (most of the time))
+- Our community (powered by caffeine, memes, and occasional brilliance)
