@@ -1,4 +1,4 @@
 {
   "title": "Components",
-  "pages": ["toggle", "triple-toggle"]
+  "pages": ["toggle", "triple-toggle", "text-animation", "dark-mode-toggle"]
 }
