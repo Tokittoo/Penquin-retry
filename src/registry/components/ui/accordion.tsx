@@ -31,7 +31,7 @@ const AccordionTrigger = React.forwardRef<
 >(
   ({ children, className, ...props }, ref) => {
     return (
-      <AccordionPrimitive.Header>
+      <AccordionPrimitive.Header className='mt-0'>
         <AccordionPrimitive.Trigger
           ref={ref}
           className={cn(
@@ -40,7 +40,7 @@ const AccordionTrigger = React.forwardRef<
           )}
           {...props}
         >
-          <span className='group-hover:ml-2 text-left transition-all duration-200'>{children}</span>
+          <span className='group-hover:ml-2 text-left transition-all duration-200 text-base font-medium'>{children}</span>
           <IconChevronDown size={18} aria-hidden={true} className='text-muted-foreground shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180' />
         </AccordionPrimitive.Trigger>
       </AccordionPrimitive.Header>
@@ -116,7 +116,7 @@ const AccordionContent = React.forwardRef<
                 <div
                   ref={ref}
                   className={cn(
-                    'px-4 py-2 text-sm',
+                    'px-4 pb-4 text-sm',
                     className
                   )}
                 >
