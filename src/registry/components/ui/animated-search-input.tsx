@@ -44,7 +44,7 @@ const AnimatedSearchInput = React.forwardRef<HTMLInputElement, AnimatedSearchInp
           onBlur={handleBlur}
           onKeyDown={handleKeydown}
           className={cn(
-            'h-10 w-full min-w-[25rem] border-2 border-neutral-200 dark:border-neutral-500 rounded-full px-6 py-2 text-sm shadow-xl/10 dark:shadow-lg dark:shadow-white focus-visible:outline-none disabled:opacity-50',
+            'h-10 w-full min-w-[25rem] border-2 border-neutral-200 dark:border-neutral-700 rounded-full px-6 py-2 text-sm shadow-xl/10 dark:shadow-lg dark:shadow-white focus-visible:outline-none disabled:opacity-50',
             'bg-gradient-to-r from-neutral-50 to-neutral-100',
             'dark:from-neutral-800 dark:to-neutral-900',
             className

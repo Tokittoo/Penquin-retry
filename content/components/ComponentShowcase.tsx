@@ -24,7 +24,7 @@ export const ComponentShowcase = ({ component, code }: { component: React.ReactN
       </div>
 
       {isCode ? (
-        <CodeBlock lang="tsx" keepBackground className='max-h-[25rem]'>
+        <CodeBlock lang="tsx" keepBackground className='max-h-[25rem] overflow-auto'>
           <Pre className="px-6 font-mono">
             {code}
           </Pre>

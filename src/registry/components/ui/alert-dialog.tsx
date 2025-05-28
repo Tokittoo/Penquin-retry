@@ -92,16 +92,22 @@ const AlertDialogContent = ({ className, ...props }: React.ComponentProps<typeof
               initial={{
                 opacity: 0,
                 scale: 0.97,
+                x: 30,
+                y: -30,
                 filter: 'blur(10px)'
               }}
               animate={{
                 opacity: 1,
                 scale: 1,
+                x: 0,
+                y: 0,
                 filter: 'blur(0px)'
               }}
               exit={{
                 opacity: 0,
                 scale: 0.95,
+                x: 30,
+                y: -30,
                 filter: 'blur(10px)'
               }}
               transition={{
