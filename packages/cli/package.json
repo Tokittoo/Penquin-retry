@@ -1,0 +1,25 @@
+{
+  "name": "vink",
+  "version": "1.0.0",
+  "description": "Vink cli to add components to your apps.",
+  "main": "dist/index.js",
+  "bin": {
+    "vink": "bin/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts"
+  },
+  "author": "Saad",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^14.0.0",
+    "fs-extra": "^11.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.29",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
