@@ -1,7 +1,7 @@
 'use client'
 
 import React from "react"
-import { TripleToggle } from "@/registry/components/ui/triple-toggle"
+import { TripleToggle } from "../../../registry/components/ui/triple-toggle"
 
 export const TripleToggleShowcase = () => {
   const [value, setValue] = React.useState("Monthly")
