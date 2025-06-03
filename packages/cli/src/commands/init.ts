@@ -18,7 +18,7 @@ export const init = new Command()
     }
 
     // Create config file if it doesn't exists
-    fs.writeFileSync(configFilePath, CONFIG_FILE_CONTENT);
+    fs.writeFileSync(configFilePath, DEFAULT_CONFIG_FILE_CONTENT);
 
     console.log(chalk.green('Config file created successfully'))
   } catch(error) {
@@ -31,7 +31,7 @@ export const init = new Command()
 });
 
 
-const CONFIG_FILE_CONTENT =
+const DEFAULT_CONFIG_FILE_CONTENT =
 `{
   "tsx": true,
   "ts": true,

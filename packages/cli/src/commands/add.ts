@@ -1,11 +1,13 @@
 import { Command } from "commander";
-import { getConfig, ProjectConfig } from "../lib/get-config.js";
+import { getConfig, ProjectConfig } from "../lib/getConfig.js";
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { getRegistry } from "../lib/get-registry.js";
+import { getRegistry } from "../lib/getRegistry.js";
 import fs from 'fs';
 import chalk from 'chalk';
 import prompts from 'prompts';
+import { execa } from 'execa'
+import { getPackageManager } from "../lib/getPackagetManager.js";
 
 export const add = new Command()
   .name('add')
@@ -81,6 +83,9 @@ const addComponents = async ({ components, config, cwd, options }: AddComponents
       fs.mkdirSync(userComponentPath, { recursive: true });
     }
 
+    // Concurrently add package dependencies
+    await installDependencies(cwd, registryComponent.dependencies, registryComponent.devDependencies)
+
     // Copy files from my registry to user's project
     for (const file of registryComponent.files) {
       try {
@@ -90,12 +95,9 @@ const addComponents = async ({ components, config, cwd, options }: AddComponents
         // Read from source and write to target
         const content = fs.readFileSync(sourcePath, 'utf-8');
         fs.writeFileSync(targetPath, content);
-      } catch (error: any) {
-        console.log(chalk.red(`Failed to copy file ${file.path}: ${error.message}`));
-        continue;
-      } finally {
+
+        // recusrively add all the dependent components
         if(registryComponent.registryDependencies) {
-           // recusrively add all the dependent components
           await addComponents({
             components: registryComponent.registryDependencies,
             config,
@@ -103,9 +105,65 @@ const addComponents = async ({ components, config, cwd, options }: AddComponents
             options
           });
         }
+      } catch (error: any) {
+        console.log(chalk.red(`Failed to copy file ${file.path}: ${error.message}`));
+        continue;
       }
     }
 
     console.log(chalk.green(`Added ${component} component`));
   }
 }
+
+// Add package dependencies
+const installDependencies = async (
+  cwd: string,
+  dependencies?: string[],
+  devDependencies?: string[]
+) => {
+  if(
+    (!dependencies || dependencies.length === 0) &&
+    (!devDependencies || devDependencies.length === 0)
+  ) {
+    return;
+  }
+  
+  try {
+    const packageManager = await getPackageManager(cwd);
+
+    if (dependencies?.length) {
+      await execa(
+        packageManager,
+        [
+          packageManager === 'npm' ? 'install' : 'add',
+          ...(packageManager === 'deno'
+            ? dependencies.map((dep) => `npm:${dep}`)
+            : dependencies),
+        ]
+        ,
+        {
+          cwd
+        }
+      )
+    }
+
+    if (devDependencies?.length) {
+      await execa(
+        packageManager,
+        [
+          packageManager === 'npm' ? 'install' : 'add',
+          '-D',
+          ...(packageManager === 'deno'
+            ? devDependencies.map((dep) => `npm:${dep}`)
+            : devDependencies),
+        ]
+        ,
+        {
+          cwd
+        }
+      )
+    }
+  } catch (error) {
+    console.log(chalk.red(`Failed to install packages: ${error}`));
+  }
+};
