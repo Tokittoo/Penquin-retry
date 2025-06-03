@@ -8,6 +8,7 @@ import chalk from 'chalk';
 import prompts from 'prompts';
 import { execa } from 'execa'
 import { getPackageManager } from "../lib/getPackagetManager.js";
+import { getSpinner } from "../lib/spinner.js";
 
 export const add = new Command()
   .name('add')
@@ -23,7 +24,7 @@ export const add = new Command()
     }
 
     // if no ts or tsx is configured, ask the user if they want to continue
-    if (!config.tsx && !config.ts) {
+    if (!config.tsx || !config.ts) {
       const { confirm } = await prompts({
         type: 'confirm',
         name: 'confirm',
@@ -62,6 +63,9 @@ interface AddComponentsParams {
 
 // Add Components to users project
 const addComponents = async ({ components, config, cwd, options }: AddComponentsParams) => {
+  const spinner = getSpinner('Adding components...');
+  spinner.start();
+  
   const registry = getRegistry();
 
   const __filename = fileURLToPath(import.meta.url);
@@ -92,6 +96,20 @@ const addComponents = async ({ components, config, cwd, options }: AddComponents
         const sourcePath = path.resolve(cliRootPath, file.path);
         const targetPath = path.resolve(userComponentPath, path.basename(file.path));
 
+        // Check if the component already exists and prompt user to overwrite
+        if(fs.existsSync(targetPath)) {
+          const { confirm } = await prompts({
+            type: 'confirm',
+            name: 'confirm',
+            message: `${component} already exists. Do you want to overwrite?`,
+            initial: false,
+          });
+    
+          if (!confirm) {
+            return;
+          }
+        }
+
         // Read from source and write to target
         const content = fs.readFileSync(sourcePath, 'utf-8');
         fs.writeFileSync(targetPath, content);
@@ -110,6 +128,8 @@ const addComponents = async ({ components, config, cwd, options }: AddComponents
         continue;
       }
     }
+
+    spinner.stop();
 
     console.log(chalk.green(`Added ${component} component`));
   }
@@ -143,7 +163,6 @@ const installDependencies = async (
         ,
         {
           cwd,
-          stdio: 'inherit' // This will show the installation progress
         }
       )
     }

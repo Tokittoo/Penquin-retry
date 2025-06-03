@@ -1,16 +1,169 @@
 {
-  "button": {
-    "name": "button",
-    "description": "A Simple button component",
-    "type": "registry:ui",
-    "files": [
-      {
-        "path": "../../registry/components/ui/button.tsx",
-        "type": "registry:ui"
-      }
-    ],
-    "dependencies": [
-      "@radix-ui/react-slot"
-    ]
+  "$schema": "./registry.schema.json",
+  "items": {
+    "button": {
+      "name": "Button",
+      "description": "A Simple button component",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../../registry/components/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-slot"
+      ]
+    },
+    "toggle": {
+      "name": "Toggle",
+      "description": "A Simple fluidic animated toggle",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../../registry/components/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ]
+    },
+    "triple-toggle": {
+      "name": "Triple Toggle",
+      "description": "A animated Triple Toggle Component",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../../registry/components/ui/triple-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@tabler/icons-react",
+        "motion"
+      ]
+    },
+    "text-animation": {
+      "name": "Text Animation",
+      "description": "A Text Animation component",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../../registry/components/ui/text-animation.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ]
+    },
+    "input": {
+      "name": "Input",
+      "description": "A Simple Input Component",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../../registry/components/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    "headline": {
+      "name": "Headline",
+      "description": "A gradient text headline for landing pages",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../../registry/components/ui/headline.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    "dark-mode-toggle": {
+      "name": "Dark Mode Toggle Button",
+      "description": "A Toggle button component to toggle themes",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../../registry/components/ui/dark-mode-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@tabler/icons-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ]
+    },
+    "animated-search-input": {
+      "name": "Animated Search Input",
+      "description": "A animated seach input component",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../../registry/components/ui/animated-search-input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ]
+    },
+    "alert-dialog": {
+      "name": "Alert Dialog",
+      "description": "A Alert Dialog Component",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../../registry/components/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-alert-dialog",
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ]
+    },
+    "accordion": {
+      "name": "Accordion",
+      "description": "A accordion component",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "../../registry/components/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-accordion",
+        "@tabler/icons-react",
+        "motion"
+      ]
+    },
+
+
+    "accordion-block": {
+      "name": "Accordion Block",
+      "description": "A Accordion Block component to add for FAQs section",
+      "type": "registry:block",
+      "files": [
+        {
+          "path": "../../registry/components/block/accordion-block.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "headline",
+        "accordion"
+      ]
+    }
   }
 }

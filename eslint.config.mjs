@@ -11,6 +11,14 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    rules: {
+      "dot-notation": ["error", { 
+        "allowKeywords": true,
+        "allowPattern": "^[a-z]+(-[a-z]+)*$"  // This allows hyphenated names
+      }]
+    }
+  }
 ];
 
 export default eslintConfig;

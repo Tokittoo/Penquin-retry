@@ -4,6 +4,7 @@ import path from 'path'
 import chalk from 'chalk'
 import { execa } from 'execa';
 import { getPackageManager } from '../lib/getPackagetManager.js';
+import { getSpinner } from '../lib/spinner.js';
 
 export const init = new Command()
 .name('init')
@@ -13,11 +14,16 @@ export const init = new Command()
   const cwd = process.cwd();
   const configFilePath = path.join(cwd, 'vink.config.json');
 
+  const spinner = getSpinner('Initializing Vink');
+
   try {
     // Skip if config file exists
     if(fs.existsSync(configFilePath)) {
-      console.log(chalk.yellow('⚠️ Config file already exists. Skipping.'));
+      console.log(chalk.yellow('⚠️  Config file already exists. Skipping.'));
+      return;
     }
+
+    spinner.start();
 
     // Create config file if it doesn't exists
     fs.writeFileSync(configFilePath, DEFAULT_CONFIG_FILE_CONTENT);
@@ -29,6 +35,8 @@ export const init = new Command()
     console.log(chalk.red('❌ Error while initializing vink to your project. Please try again. If the issue still persists contact the creater of this (btw thats me 😁)'));
     console.error(error);
   }
+
+  spinner.stop();
 
   console.log(chalk.green('✅ Vink initialized successfully.'));
   console.log('You can now run vink add componentName to add components to your project');
@@ -73,19 +81,26 @@ const addInitialSetup = async (cwd: string) => {
 
     const packageManager = await getPackageManager(cwd);
 
+    const initialDependencies = [
+      'class-variance-authority@latest',
+      'tailwind-merge@latest'
+    ]
+
     try {
       await execa(
         packageManager,
         [
           packageManager === 'npm' ? 'install' : 'add',
-          'class-variance-authority@latest',
-          'tailwind-merge@latest',
-        ],
+          ...(packageManager === 'deno'
+            ? initialDependencies.map((dep) => `npm:${dep}`)
+            : initialDependencies),
+        ]
+        ,
         {
           cwd,
-          stdio: 'inherit' // This will show the installation progress
         }
       )
+
       console.log(chalk.green('Successfully installed required dependencies'))
     } catch (error: any) {
       console.log(chalk.red(`Failed to install dependencies: ${error.message}`))
