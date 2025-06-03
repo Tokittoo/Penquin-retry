@@ -5,11 +5,11 @@
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "vink": "bin/index.js"
+    "vink": "./dist/index.js"
   },
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node src/index.ts"
+    "dev": "node dist/index.js"
   },
   "author": "Saad",
   "license": "ISC",
@@ -24,7 +24,7 @@
   "devDependencies": {
     "@types/node": "^22.15.29",
     "@types/prompts": "^2.4.9",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.7.1",
     "typescript": "^5.8.3"
   }
 }

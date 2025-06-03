@@ -1,6 +1,9 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import path from 'path'
+import fs from 'fs'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 interface RegistryItem {
   name: string;
@@ -15,10 +18,8 @@ interface RegistryItem {
   }[];
 }
 
-export const getRegistry = (): Record<string, RegistryItem> => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.resolve(__filename);
 
+export const getRegistry = (): Record<string, RegistryItem> => {
   const registryPath = path.resolve(__dirname, '../../registry.json');
   
   if (!fs.existsSync(registryPath)) {

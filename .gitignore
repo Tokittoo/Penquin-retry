@@ -42,3 +42,4 @@ next-env.d.ts
 
 # vink cli
 packages/cli/node_modules
+packages/cli/dist
