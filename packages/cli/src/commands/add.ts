@@ -142,7 +142,8 @@ const installDependencies = async (
         ]
         ,
         {
-          cwd
+          cwd,
+          stdio: 'inherit' // This will show the installation progress
         }
       )
     }

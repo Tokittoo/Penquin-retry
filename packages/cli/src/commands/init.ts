@@ -73,17 +73,27 @@ const addInitialSetup = async (cwd: string) => {
 
     const packageManager = await getPackageManager(cwd);
 
-    await execa(
-      packageManager,
-      [
-        packageManager === 'npm' ? 'install' : 'add',
-        'class-variance-authority',
-      ]
-      ,
-      {
-        cwd
-      }
-    )
+    try {
+      await execa(
+        packageManager,
+        [
+          packageManager === 'npm' ? 'install' : 'add',
+          'class-variance-authority@latest',
+          'tailwind-merge@latest',
+        ],
+        {
+          cwd,
+          stdio: 'inherit' // This will show the installation progress
+        }
+      )
+      console.log(chalk.green('Successfully installed required dependencies'))
+    } catch (error: any) {
+      console.log(chalk.red(`Failed to install dependencies: ${error.message}`))
+      console.log(chalk.yellow('You may need to install these packages manually:'))
+      console.log(chalk.yellow('- class-variance-authority'))
+      console.log(chalk.yellow('- tailwind-merge'))
+      process.exit(1)
+    }
   } catch (error) {
     console.log('Error while Initializing the setup E:', (error as Error).message);
     throw error;

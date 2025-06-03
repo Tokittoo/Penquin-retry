@@ -8,6 +8,9 @@
         "path": "../../registry/components/ui/button.tsx",
         "type": "registry:ui"
       }
+    ],
+    "dependencies": [
+      "@radix-ui/react-slot"
     ]
   }
 }
