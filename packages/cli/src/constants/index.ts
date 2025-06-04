@@ -4,7 +4,7 @@ export const DEFAULT_CONFIG_FILE_CONTENT =
   "ts": true,
   "componentsPaths": {
     "ui": "src/components/ui",
-    "blocks": "src/components/blocks"
+    "block": "src/components/blocks"
   },
   "snippetsPath": "src/snippets",
   "alwaysForce": false,

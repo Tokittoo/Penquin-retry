@@ -4,7 +4,7 @@
   "type": "object",
   "properties": {
     "items": {
-      "type": "object",
+      "type": "array",
       "additionalProperties": {
         "type": "object",
         "properties": {

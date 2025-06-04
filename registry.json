@@ -2,14 +2,15 @@
   "$schema": "./registry.schema.json",
   "title": "Vink Component Registry",
   "description": "CLI for Vink to add components",
-  "items": {
-    "button": {
-      "name": "Button",
+  "items": [
+    {
+      "name": "button",
+      "title": "Button",
       "description": "A Simple button component",
       "type": "registry:ui",
       "files": [
         {
-          "path": "../../registry/components/ui/button.tsx",
+          "path": "registry/components/ui/button.tsx",
           "type": "registry:ui"
         }
       ],
@@ -17,13 +18,14 @@
         "@radix-ui/react-slot"
       ]
     },
-    "toggle": {
-      "name": "Toggle",
+    {
+      "name": "toggle",
+      "title": "Toggle",
       "description": "A Simple fluidic animated toggle",
       "type": "registry:ui",
       "files": [
         {
-          "path": "../../registry/components/ui/toggle.tsx",
+          "path": "registry/components/ui/toggle.tsx",
           "type": "registry:ui"
         }
       ],
@@ -31,13 +33,14 @@
         "motion"
       ]
     },
-    "triple-toggle": {
-      "name": "Triple Toggle",
+    {
+      "name": "triple-toggle",
+      "title": "Triple Toggle",
       "description": "A animated Triple Toggle Component",
       "type": "registry:ui",
       "files": [
         {
-          "path": "../../registry/components/ui/triple-toggle.tsx",
+          "path": "registry/components/ui/triple-toggle.tsx",
           "type": "registry:ui"
         }
       ],
@@ -46,13 +49,14 @@
         "motion"
       ]
     },
-    "text-animation": {
-      "name": "Text Animation",
+    {
+      "name": "text-animation",
+      "title": "Text Animation",
       "description": "A Text Animation component",
       "type": "registry:ui",
       "files": [
         {
-          "path": "../../registry/components/ui/text-animation.tsx",
+          "path": "registry/components/ui/text-animation.tsx",
           "type": "registry:ui"
         }
       ],
@@ -60,35 +64,38 @@
         "motion"
       ]
     },
-    "input": {
-      "name": "Input",
+    {
+      "name": "input",
+      "title": "Input",
       "description": "A Simple Input Component",
       "type": "registry:ui",
       "files": [
         {
-          "path": "../../registry/components/ui/input.tsx",
+          "path": "registry/components/ui/input.tsx",
           "type": "registry:ui"
         }
       ]
     },
-    "headline": {
-      "name": "Headline",
+    {
+      "name": "headline",
+      "title": "Headline",
       "description": "A gradient text headline for landing pages",
       "type": "registry:ui",
       "files": [
         {
-          "path": "../../registry/components/ui/headline.tsx",
+          "path": "registry/components/ui/headline.tsx",
           "type": "registry:ui"
         }
       ]
     },
-    "dark-mode-toggle": {
-      "name": "Dark Mode Toggle Button",
+    {
+      "name": "dark-mode-toggle",
+      "title": "Dark Mode Toggle Button",
       "description": "A Toggle button component to toggle themes",
       "type": "registry:ui",
       "files": [
         {
-          "path": "../../registry/components/ui/dark-mode-toggle.tsx",
+          "path": "registry/components/ui/dark-mode-toggle.tsx",
           "type": "registry:ui"
         }
       ],
@@ -99,13 +106,14 @@
         "button"
       ]
     },
-    "animated-search-input": {
-      "name": "Animated Search Input",
+    {
+      "name": "animated-search-input",
+      "title": "Animated Search Input",
       "description": "A animated seach input component",
       "type": "registry:ui",
       "files": [
         {
-          "path": "../../registry/components/ui/animated-search-input.tsx",
+          "path": "registry/components/ui/animated-search-input.tsx",
           "type": "registry:ui"
         }
       ],
@@ -113,13 +121,14 @@
         "motion"
       ]
     },
-    "alert-dialog": {
-      "name": "Alert Dialog",
+    {
+      "name": "alert-dialog",
+      "title": "Alert Dialog",
       "description": "A Alert Dialog Component",
       "type": "registry:ui",
       "files": [
         {
-          "path": "../../registry/components/ui/alert-dialog.tsx",
+          "path": "registry/components/ui/alert-dialog.tsx",
           "type": "registry:ui"
         }
       ],
@@ -131,13 +140,14 @@
         "button"
       ]
     },
-    "accordion": {
-      "name": "Accordion",
+    {
+      "name": "accordion",
+      "title": "Accordion",
       "description": "A accordion component",
       "type": "registry:ui",
       "files": [
         {
-          "path": "../../registry/components/ui/accordion.tsx",
+          "path": "registry/components/ui/accordion.tsx",
           "type": "registry:ui"
         }
       ],
@@ -147,15 +157,14 @@
         "motion"
       ]
     },
-
-
-    "accordion-block": {
-      "name": "Accordion Block",
+    {
+      "name": "accordion-block",
+      "title": "Accordion Block",
       "description": "A Accordion Block component to add for FAQs section",
       "type": "registry:block",
       "files": [
         {
-          "path": "../../registry/components/block/accordion-block.tsx",
+          "path": "registry/components/block/accordion-block.tsx",
           "type": "registry:block"
         }
       ],
@@ -167,5 +176,5 @@
         "accordion"
       ]
     }
-  }
+  ]
 }

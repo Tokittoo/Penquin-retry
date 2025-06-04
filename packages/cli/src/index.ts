@@ -3,6 +3,7 @@
 import { Command } from 'commander'
 import { init } from './commands/init.js'
 import { add } from './commands/add.js'
+import { build } from './commands/registry/buid.js';
 
 async function main() {
   const program = new Command()
@@ -13,6 +14,10 @@ async function main() {
   program
   .addCommand(init)
   .addCommand(add)
+
+  // Registry commands
+  program
+  .addCommand(build)
 
   program.parse();
 }

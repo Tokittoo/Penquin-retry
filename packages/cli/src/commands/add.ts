@@ -2,13 +2,14 @@ import { Command } from "commander";
 import { getConfig, ProjectConfig } from "../lib/getConfig.js";
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { getRegistry } from "../lib/getRegistry.js";
+import { getRegistry, RegistryItem } from "../lib/getRegistry.js";
 import fs from 'fs';
 import chalk from 'chalk';
 import prompts from 'prompts';
 import { execa } from 'execa'
 import { getPackageManager } from "../lib/getPackagetManager.js";
 import { getSpinner } from "../lib/spinner.js";
+import { getRegistryComponent } from "../lib/getRegistryComponent.js";
 
 export const add = new Command()
   .name('add')
@@ -75,7 +76,7 @@ const addComponents = async ({ components, config, cwd, options }: AddComponents
     const cliRootPath = path.resolve(__dirname, '../../');
 
     for (const component of components) {
-      const registryComponent = registry.items[component];
+      const registryComponent: RegistryItem | null = await getRegistryComponent(component);
 
       if (!registryComponent) {
         spinner.stop();
@@ -98,7 +99,6 @@ const addComponents = async ({ components, config, cwd, options }: AddComponents
       // Copy files from my registry to user's project
       for (const file of registryComponent.files) {
         try {
-          const sourcePath = path.resolve(cliRootPath, file.path);
           const targetPath = path.resolve(userComponentPath, path.basename(file.path));
 
           // Check if the component already exists and prompt user to overwrite
@@ -111,15 +111,14 @@ const addComponents = async ({ components, config, cwd, options }: AddComponents
               initial: false,
             });
       
+            spinner.start();
+
             if (!confirm) {
               continue;
             }
-            spinner.start();
           }
 
-          // Read from source and write to target
-          const content = fs.readFileSync(sourcePath, 'utf-8');
-          fs.writeFileSync(targetPath, content);
+          fs.writeFileSync(targetPath, file.content!);
 
           // recusrively add all the dependent components
           if(registryComponent.registryDependencies) {
@@ -137,11 +136,13 @@ const addComponents = async ({ components, config, cwd, options }: AddComponents
         }
       }
     }
+
+    spinner.succeed('Components added successfully');
   } catch (error) {
     spinner.fail('Failed to add components');
     throw error;
   } finally {
-    spinner.succeed('Components added successfully');
+    spinner.stop();
   }
 }
 

@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-interface RegistryItem {
+export interface RegistryItem {
   name: string;
   description: string;
   type: 'registry:ui' | 'registry:block' | 'registry:snippet' | 'registry:file';
@@ -15,18 +15,19 @@ interface RegistryItem {
   files: {
     path: string;
     type: 'registry:ui' | 'registry:block' | 'registry:snippet' | 'registry:file';
+    content?: string
   }[];
 }
 
 interface Registry {
   title: string,
   description: string,
-  items: Record<string, RegistryItem>
+  items: RegistryItem[]
 }
 
 
 export const getRegistry = (): Registry => {
-  const registryPath = path.resolve(__dirname, '../../registry.json');
+  const registryPath = path.resolve(__dirname, '../../../../registry.json');
   
   if (!fs.existsSync(registryPath)) {
     throw new Error('Registry directory not found');
