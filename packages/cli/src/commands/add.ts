@@ -64,74 +64,84 @@ interface AddComponentsParams {
 // Add Components to users project
 const addComponents = async ({ components, config, cwd, options }: AddComponentsParams) => {
   const spinner = getSpinner('Adding components...');
-  spinner.start();
-  
-  const registry = getRegistry();
 
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
-  const cliRootPath = path.resolve(__dirname, '../../');
-
-  for (const component of components) {
-    const registryComponent = registry[component];
-    const componentType = registryComponent?.type.split(':')[1] as keyof typeof config.componentsPaths;
-
-    if (!registryComponent) {
-      console.log(chalk.red(`Component ${component} not found in registry`));
-      continue;
-    }
-
-    // Create component directory in user's project (if it doesn't exists)
-    const userComponentPath = path.resolve(cwd, config.componentsPaths[componentType]);
-    if (!fs.existsSync(userComponentPath)) {
-      fs.mkdirSync(userComponentPath, { recursive: true });
-    }
-
-    // Concurrently add package dependencies
-    await installDependencies(cwd, registryComponent.dependencies, registryComponent.devDependencies)
-
-    // Copy files from my registry to user's project
-    for (const file of registryComponent.files) {
-      try {
-        const sourcePath = path.resolve(cliRootPath, file.path);
-        const targetPath = path.resolve(userComponentPath, path.basename(file.path));
-
-        // Check if the component already exists and prompt user to overwrite
-        if(fs.existsSync(targetPath)) {
-          const { confirm } = await prompts({
-            type: 'confirm',
-            name: 'confirm',
-            message: `${component} already exists. Do you want to overwrite?`,
-            initial: false,
-          });
+  try {
+    spinner.start();
     
-          if (!confirm) {
-            return;
-          }
-        }
+    const registry = getRegistry();
 
-        // Read from source and write to target
-        const content = fs.readFileSync(sourcePath, 'utf-8');
-        fs.writeFileSync(targetPath, content);
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    const cliRootPath = path.resolve(__dirname, '../../');
 
-        // recusrively add all the dependent components
-        if(registryComponent.registryDependencies) {
-          await addComponents({
-            components: registryComponent.registryDependencies,
-            config,
-            cwd,
-            options
-          });
-        }
-      } catch (error: any) {
-        console.log(chalk.red(`Failed to copy file ${file.path}: ${error.message}`));
+    for (const component of components) {
+      const registryComponent = registry.items[component];
+
+      if (!registryComponent) {
+        spinner.stop();
+        console.log(chalk.red(`Component ${component} not found in registry`));
+        spinner.start();
         continue;
       }
+
+      const componentType = registryComponent.type.split(':')[1] as keyof typeof config.componentsPaths;
+
+      // Create component directory in user's project (if it doesn't exists)
+      const userComponentPath = path.resolve(cwd, config.componentsPaths[componentType]);
+      if (!fs.existsSync(userComponentPath)) {
+        fs.mkdirSync(userComponentPath, { recursive: true });
+      }
+
+      // Concurrently add package dependencies
+      await installDependencies(cwd, registryComponent.dependencies, registryComponent.devDependencies)
+
+      // Copy files from my registry to user's project
+      for (const file of registryComponent.files) {
+        try {
+          const sourcePath = path.resolve(cliRootPath, file.path);
+          const targetPath = path.resolve(userComponentPath, path.basename(file.path));
+
+          // Check if the component already exists and prompt user to overwrite
+          if(fs.existsSync(targetPath)) {
+            spinner.stop();
+            const { confirm } = await prompts({
+              type: 'confirm',
+              name: 'confirm',
+              message: `${component} already exists. Do you want to overwrite?`,
+              initial: false,
+            });
+      
+            if (!confirm) {
+              continue;
+            }
+            spinner.start();
+          }
+
+          // Read from source and write to target
+          const content = fs.readFileSync(sourcePath, 'utf-8');
+          fs.writeFileSync(targetPath, content);
+
+          // recusrively add all the dependent components
+          if(registryComponent.registryDependencies) {
+            await addComponents({
+              components: registryComponent.registryDependencies,
+              config,
+              cwd,
+              options
+            });
+          }
+        } catch (error: any) {
+          console.log(chalk.red(`Failed to add ${component} component`));
+          console.log(chalk.red(`Failed to copy file ${file.path}: ${error.message}`));
+          continue;
+        }
+      }
     }
-
-    spinner.stop();
-
-    console.log(chalk.green(`Added ${component} component`));
+  } catch (error) {
+    spinner.fail('Failed to add components');
+    throw error;
+  } finally {
+    spinner.succeed('Components added successfully');
   }
 }
 

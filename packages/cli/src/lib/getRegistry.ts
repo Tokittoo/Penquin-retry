@@ -18,8 +18,14 @@ interface RegistryItem {
   }[];
 }
 
+interface Registry {
+  title: string,
+  description: string,
+  items: Record<string, RegistryItem>
+}
 
-export const getRegistry = (): Record<string, RegistryItem> => {
+
+export const getRegistry = (): Registry => {
   const registryPath = path.resolve(__dirname, '../../registry.json');
   
   if (!fs.existsSync(registryPath)) {
@@ -27,7 +33,7 @@ export const getRegistry = (): Record<string, RegistryItem> => {
   }
 
   const rawRegistryContent = fs.readFileSync(registryPath, 'utf-8');
-  const registry: Record<string, RegistryItem> = JSON.parse(rawRegistryContent);
+  const registry = JSON.parse(rawRegistryContent);
 
-  return registry;
+  return registry as Registry;
 }; 

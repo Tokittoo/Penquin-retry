@@ -1,5 +1,7 @@
 {
   "$schema": "./registry.schema.json",
+  "title": "Vink Component Registry",
+  "description": "CLI for Vink to add components",
   "items": {
     "button": {
       "name": "Button",

@@ -5,6 +5,7 @@ import chalk from 'chalk'
 import { execa } from 'execa';
 import { getPackageManager } from '../lib/getPackagetManager.js';
 import { getSpinner } from '../lib/spinner.js';
+import { CN_FUNCTION_FILE_CONTENT, DEFAULT_CONFIG_FILE_CONTENT, INITIAL_REQUIRED_DEPENDENCIES } from '../constants/index.js';
 
 export const init = new Command()
 .name('init')
@@ -30,40 +31,16 @@ export const init = new Command()
 
     await addInitialSetup(cwd);
 
-    console.log(chalk.green('Config file created successfully'))
+    console.log(chalk.green('Config file created successfully'));
+    
+    spinner.succeed('Vink initialized successfully.');
+    console.log('You can now run `vink add componentName` to add components to your project');
   } catch(error) {
-    console.log(chalk.red('❌ Error while initializing vink to your project. Please try again. If the issue still persists contact the creater of this (btw thats me 😁)'));
+    spinner.fail('Error while initializing vink to your project.');
+    console.log(chalk.yellow('Please try again. If the issue still persists contact the creater of this (btw thats me 😁)'));
     console.error(error);
   }
-
-  spinner.stop();
-
-  console.log(chalk.green('✅ Vink initialized successfully.'));
-  console.log('You can now run vink add componentName to add components to your project');
 });
-
-
-const DEFAULT_CONFIG_FILE_CONTENT =
-`{
-  "tsx": true,
-  "ts": true,
-  "componentsPaths": {
-    "ui": "src/components/ui",
-    "blocks": "src/components/blocks"
-  },
-  "snippetsPath": "src/snippets",
-  "alwaysForce": false,
-  "iconLibrary": "@tabler/icons-react"
-}`
-
-const CN_FILE_CONTENT =
-`import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
-`
 
 const addInitialSetup = async (cwd: string) => {
   try {
@@ -77,14 +54,9 @@ const addInitialSetup = async (cwd: string) => {
     const CNFunctionFilePath = path.join(libPath, 'utils.ts');
 
     // Write the cn function file
-    fs.writeFileSync(CNFunctionFilePath, CN_FILE_CONTENT);
+    fs.writeFileSync(CNFunctionFilePath, CN_FUNCTION_FILE_CONTENT);
 
     const packageManager = await getPackageManager(cwd);
-
-    const initialDependencies = [
-      'class-variance-authority@latest',
-      'tailwind-merge@latest'
-    ]
 
     try {
       await execa(
@@ -92,8 +64,8 @@ const addInitialSetup = async (cwd: string) => {
         [
           packageManager === 'npm' ? 'install' : 'add',
           ...(packageManager === 'deno'
-            ? initialDependencies.map((dep) => `npm:${dep}`)
-            : initialDependencies),
+            ? INITIAL_REQUIRED_DEPENDENCIES.map((dep) => `npm:${dep}`)
+            : INITIAL_REQUIRED_DEPENDENCIES),
         ]
         ,
         {
