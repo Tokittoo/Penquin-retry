@@ -1,11 +1,12 @@
 {
-  "name": "vink",
+  "name": "vinq",
   "version": "1.0.0",
-  "description": "Vink cli to add components to your apps.",
+  "description": "Vinq cli to add components to your apps.",
   "type": "module",
+  "files": ["dist"],
   "main": "dist/index.js",
   "bin": {
-    "vink": "./dist/index.js"
+    "vinq": "./dist/index.js"
   },
   "scripts": {
     "build": "tsc",
@@ -18,7 +19,6 @@
     "chalk": "^5.4.1",
     "commander": "^14.0.0",
     "execa": "^9.6.0",
-    "fs-extra": "^11.3.0",
     "ora": "^8.2.0",
     "prompts": "^2.4.2"
   },

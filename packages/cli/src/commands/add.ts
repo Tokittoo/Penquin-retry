@@ -10,6 +10,7 @@ import { execa } from 'execa'
 import { getPackageManager } from "../lib/getPackagetManager.js";
 import { getSpinner } from "../lib/spinner.js";
 import { getRegistryComponent } from "../lib/getRegistryComponent.js";
+import { BASE_URL } from "../constants/index.js";
 
 export const add = new Command()
   .name('add')
@@ -68,12 +69,6 @@ const addComponents = async ({ components, config, cwd, options }: AddComponents
 
   try {
     spinner.start();
-    
-    const registry = getRegistry();
-
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = path.dirname(__filename);
-    const cliRootPath = path.resolve(__dirname, '../../');
 
     for (const component of components) {
       const registryComponent: RegistryItem | null = await getRegistryComponent(component);

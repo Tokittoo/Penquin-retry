@@ -24,3 +24,11 @@ export const INITIAL_REQUIRED_DEPENDENCIES = [
   'class-variance-authority@latest',
   'tailwind-merge@latest'
 ] as const
+
+
+
+// Use this for dev
+// export const BASE_URL = 'http://localhost:3000'
+
+// Use this for prod
+export const BASE_URL = 'https://vinq.live'

@@ -7,9 +7,9 @@ import { build } from './commands/registry/buid.js';
 
 async function main() {
   const program = new Command()
-  .name('vink')
+  .name('vinq')
   .description('add components and dependencies to your apps. (Backend snippets under developement')
-  .version('0.1.0');
+  .version('1.0.0');
 
   program
   .addCommand(init)
