@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Vynk",
   description: "Build what matters",
+  icons: {
+    icon: '/logo.png'
+  }
 };
 
 export default function RootLayout({
