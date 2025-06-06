@@ -15,12 +15,12 @@ export interface ProjectConfig {
 }
 
 export const getConfig = (cwd: string): ProjectConfig | null => {
-  const configFilePath = path.join(cwd, 'vinq.config.json');
+  const configFilePath = path.join(cwd, 'vynk.config.json');
 
   if (!fs.existsSync(configFilePath)) {
-    console.log(chalk.red('Vinq config file not found'));
-    console.log('Vinq is not initialized in this project');
-    console.log(chalk.yellow('Run `vinq init` to initialize Vinq in your project'));
+    console.log(chalk.red('Vynk config file not found'));
+    console.log('Vynk is not initialized in this project');
+    console.log(chalk.yellow('Run `vynk init` to initialize Vynk in your project'));
     process.exit(1);
   }
 

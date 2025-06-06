@@ -1,12 +1,12 @@
 {
-  "name": "vinq",
+  "name": "vynk",
   "version": "1.0.0",
-  "description": "Vinq cli to add components to your apps.",
+  "description": "Vynk cli to add components to your apps.",
   "type": "module",
   "files": ["dist"],
   "main": "dist/index.js",
   "bin": {
-    "vinq": "./dist/index.js"
+    "vynk": "./dist/index.js"
   },
   "scripts": {
     "build": "tsc",

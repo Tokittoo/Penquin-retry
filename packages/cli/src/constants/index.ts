@@ -31,4 +31,4 @@ export const INITIAL_REQUIRED_DEPENDENCIES = [
 // export const BASE_URL = 'http://localhost:3000'
 
 // Use this for prod
-export const BASE_URL = 'https://vinq.live'
+export const BASE_URL = 'https://vynk.live'

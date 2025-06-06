@@ -7,7 +7,7 @@ import { build } from './commands/registry/buid.js';
 
 async function main() {
   const program = new Command()
-  .name('vinq')
+  .name('vynk')
   .description('add components and dependencies to your apps. (Backend snippets under developement')
   .version('1.0.0');
 

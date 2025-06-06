@@ -9,13 +9,13 @@ import { CN_FUNCTION_FILE_CONTENT, DEFAULT_CONFIG_FILE_CONTENT, INITIAL_REQUIRED
 
 export const init = new Command()
 .name('init')
-.description('initialize Vinq into your project')
+.description('initialize Vynk into your project')
 // .argument // Not supporting to add components while initializing vinq. If needed use this to optionally accept the components to add
 .action(async (options: { cwd: string }) => {
   const cwd = process.cwd();
-  const configFilePath = path.join(cwd, 'vinq.config.json');
+  const configFilePath = path.join(cwd, 'vynk.config.json');
 
-  const spinner = getSpinner('Initializing Vinq');
+  const spinner = getSpinner('Initializing Vynk');
 
   try {
     // Skip if config file exists
@@ -33,10 +33,10 @@ export const init = new Command()
 
     console.log(chalk.green('Config file created successfully'));
     
-    spinner.succeed('Vinq initialized successfully.');
+    spinner.succeed('Vynk initialized successfully.');
     console.log('You can now run `vinq add componentName` to add components to your project');
   } catch(error) {
-    spinner.fail('Error while initializing vinq to your project.');
+    spinner.fail('Error while initializing Vynk to your project.');
     console.log(chalk.yellow('Please try again. If the issue still persists contact the creater of this (btw thats me 😁)'));
     console.error(error);
   }
