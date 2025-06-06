@@ -40,7 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-
-# vinq cli
+# vynk cli
 packages/cli/node_modules
 packages/cli/dist

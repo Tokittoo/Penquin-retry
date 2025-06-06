@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { AnimatedSearchInput } from '@/registry/components/ui/animated-search-input'
+import { AnimatedSearchInput } from '../../../registry/components/ui/animated-search-input'
 
 export const AnimatedSearchInputShowcase = () => {
   const [value, setValue] = React.useState("");

@@ -1,48 +1,101 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "component",
-  "homepage": "http://localhost:3000",
+  "$schema": "./registry.schema.json",
+  "title": "Vink Component Registry",
+  "description": "CLI for Vink to add components",
   "items": [
     {
       "name": "button",
-      "type": "registry:ui",
       "title": "Button",
-      "description": "A Simple UI button component",
+      "description": "A Simple button component",
+      "type": "registry:ui",
       "files": [
         {
-          "path": "src/registry/components/ui/button.tsx",
+          "path": "registry/components/ui/button.tsx",
           "type": "registry:ui"
         }
       ],
       "dependencies": [
         "@radix-ui/react-slot"
-      ],
-      "author": "Saad"
+      ]
     },
     {
       "name": "toggle",
-      "type": "registry:ui",
       "title": "Toggle",
-      "description": "A Simple Toggle component",
+      "description": "A Simple fluidic animated toggle",
+      "type": "registry:ui",
       "files": [
         {
-          "path": "src/registry/components/ui/toggle.tsx",
+          "path": "registry/components/ui/toggle.tsx",
           "type": "registry:ui"
         }
       ],
       "dependencies": [
         "motion"
+      ]
+    },
+    {
+      "name": "triple-toggle",
+      "title": "Triple Toggle",
+      "description": "A animated Triple Toggle Component",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/components/ui/triple-toggle.tsx",
+          "type": "registry:ui"
+        }
       ],
-      "author": "Saad"
+      "dependencies": [
+        "@tabler/icons-react",
+        "motion"
+      ]
+    },
+    {
+      "name": "text-animation",
+      "title": "Text Animation",
+      "description": "A Text Animation component",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/components/ui/text-animation.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "name": "input",
+      "title": "Input",
+      "description": "A Simple Input Component",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/components/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "headline",
+      "title": "Headline",
+      "description": "A gradient text headline for landing pages",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/components/ui/headline.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "dark-mode-toggle",
+      "title": "Dark Mode Toggle Button",
+      "description": "A Toggle button component to toggle themes",
       "type": "registry:ui",
-      "title": "Dark Mode Toggle",
-      "description": "Dark Mode Toggle Button",
       "files": [
         {
-          "path": "src/registry/components/ui/dark-mode-toggle.tsx",
+          "path": "registry/components/ui/dark-mode-toggle.tsx",
           "type": "registry:ui"
         }
       ],
@@ -51,52 +104,31 @@
       ],
       "registryDependencies": [
         "button"
-      ],
-      "author": "Saad"
+      ]
     },
     {
-      "name": "triple-toggle",
+      "name": "animated-search-input",
+      "title": "Animated Search Input",
+      "description": "A animated seach input component",
       "type": "registry:ui",
-      "title": "Triple Toggle",
-      "description": "A toggle component with a subtoggle",
       "files": [
         {
-          "path": "src/registry/components/ui/triple-toggle.tsx",
+          "path": "registry/components/ui/animated-search-input.tsx",
           "type": "registry:ui"
         }
       ],
       "dependencies": [
-        "@tabler/icons-react",
         "motion"
-      ],
-      "author": "Saad"
-    },
-    {
-      "name": "accordion",
-      "type": "registry:ui",
-      "title": "ACcordion",
-      "description": "Accordion content with dropdown content",
-      "files": [
-        {
-          "path": "src/registry/components/ui/accordion.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "dependencies": [
-        "@radix-ui/react-accordion",
-        "@tabler/icons-react",
-        "motion"
-      ],
-      "author": "Saad"
+      ]
     },
     {
       "name": "alert-dialog",
-      "type": "registry:ui",
       "title": "Alert Dialog",
-      "description": "Alert Dialog to popup for confirming a action",
+      "description": "A Alert Dialog Component",
+      "type": "registry:ui",
       "files": [
         {
-          "path": "src/registry/components/ui/alert-dialog.tsx",
+          "path": "registry/components/ui/alert-dialog.tsx",
           "type": "registry:ui"
         }
       ],
@@ -106,30 +138,33 @@
       ],
       "registryDependencies": [
         "button"
-      ],
-      "author": "Saad"
+      ]
     },
     {
-      "name": "headline",
+      "name": "accordion",
+      "title": "Accordion",
+      "description": "A accordion component",
       "type": "registry:ui",
-      "title": "Headline",
-      "description": "A gradient headline for landing pages",
       "files": [
         {
-          "path": "src/registry/components/ui/headline.tsx",
+          "path": "registry/components/ui/accordion.tsx",
           "type": "registry:ui"
         }
       ],
-      "author": "Saad"
+      "dependencies": [
+        "@radix-ui/react-accordion",
+        "@tabler/icons-react",
+        "motion"
+      ]
     },
     {
       "name": "accordion-block",
-      "type": "registry:ui",
       "title": "Accordion Block",
-      "description": "A animated accordion block",
+      "description": "A Accordion Block component to add for FAQs section",
+      "type": "registry:block",
       "files": [
         {
-          "path": "src/registry/components/block/accordion-block.tsx",
+          "path": "registry/components/block/accordion-block.tsx",
           "type": "registry:block"
         }
       ],
@@ -139,38 +174,6 @@
       "registryDependencies": [
         "headline",
         "accordion"
-      ],
-      "author": "Saad"
-    },
-    {
-      "name": "text-animation",
-      "type": "registry:ui",
-      "title": "Text Animation",
-      "description": "A component to animate text with customizations available",
-      "files": [
-        {
-          "path": "src/registry/components/ui/text-animation.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "dependencies": [
-        "motion"
-      ],
-      "author": "Saad"
-    },
-    {
-      "name": "animated-search-input",
-      "type": "registry:ui",
-      "title": "Animated Search Input",
-      "description": "A Input field ideal for search inputs with aniamted placeholders",
-      "files": [
-        {
-          "path": "src/registry/components/ui/animated-search-input.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "dependencies": [
-        "motion"
       ]
     }
   ]
