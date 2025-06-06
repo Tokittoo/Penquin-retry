@@ -34,7 +34,7 @@ export const init = new Command()
     console.log(chalk.green('Config file created successfully'));
     
     spinner.succeed('Vynk initialized successfully.');
-    console.log('You can now run `vinq add componentName` to add components to your project');
+    console.log('You can now run `npx vynk add componentName` to add components to your project');
   } catch(error) {
     spinner.fail('Error while initializing Vynk to your project.');
     console.log(chalk.yellow('Please try again. If the issue still persists contact the creater of this (btw thats me 😁)'));

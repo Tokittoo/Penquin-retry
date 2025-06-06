@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from './ui/button'
+import { Button } from './ui/Btn'
 import { IconArrowRight } from '@tabler/icons-react'
 import Link from 'next/link'
 
