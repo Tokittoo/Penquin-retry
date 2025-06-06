@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeContextProvider } from "@/contexts/ThemeContextProvider";
 import { RootProvider } from "fumadocs-ui/provider"
 import Navbar from "@/components/Navbar";
+import { Analytics } from '@vercel/analytics/next';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({
           <RootProvider>
             <Navbar />
             {children}
+            <Analytics />
           </RootProvider>
         </ThemeContextProvider>
       </body>
