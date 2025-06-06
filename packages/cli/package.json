@@ -1,9 +1,12 @@
 {
   "name": "vynk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vynk cli to add components to your apps.",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "main": "dist/index.js",
   "bin": {
     "vynk": "./dist/index.js"
