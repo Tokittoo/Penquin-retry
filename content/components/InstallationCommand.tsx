@@ -20,7 +20,7 @@ export const InstallationCommand = ({ component, command }: { component?: string
         <CodeBlock>
           <Pre className='px-6 font-mono text-[14px]'>
             {
-              command ? `npx vink ${command}` : `npx vink add ${component}`
+              command ? `npx vynk ${command}` : `npx vynk add ${component}`
             }
           </Pre>
         </CodeBlock>
@@ -30,7 +30,7 @@ export const InstallationCommand = ({ component, command }: { component?: string
         <CodeBlock lang="bash" keepBackground>
           <Pre className='px-6 font-mono text-[14px]'>
             {
-              command ? `yarn vink ${command}` : `yarn vink add ${component}`
+              command ? `yarn vynk ${command}` : `yarn vynk add ${component}`
             }
           </Pre>
         </CodeBlock>
@@ -40,7 +40,7 @@ export const InstallationCommand = ({ component, command }: { component?: string
         <CodeBlock lang="bash" keepBackground>
           <Pre className='px-6 font-mono text-[14px]'>
             {
-              command ? `pnpm dlx vink ${command}` : `pnpm dlx vink add ${component}`
+              command ? `pnpm dlx vynk ${command}` : `pnpm dlx vynk add ${component}`
             }
           </Pre>
         </CodeBlock>
@@ -50,7 +50,7 @@ export const InstallationCommand = ({ component, command }: { component?: string
         <CodeBlock lang="bash" keepBackground>
           <Pre className='px-6 font-mono text-[14px]'>
             {
-              command ? `bunx --bun vink ${command}` : `bunx --bun vink add ${component}`
+              command ? `bunx --bun vynk ${command}` : `bunx --bun vynk add ${component}`
             }
           </Pre>
         </CodeBlock>

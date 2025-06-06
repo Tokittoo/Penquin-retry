@@ -71,7 +71,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className='flex justify-between'>
+      <div className='flex justify-between max-md:mt-8'>
         <p className='text-muted-foreground text-sm'>&copy; 2025, All rights reserved.</p>
         <div className='flex gap-2'>
           <Link href={'https://github.com/M-SaaD-H/vink'} target={'_blank'} className='p-2 rounded-full cursor-pointer'><FaGithub size={18} /></Link>
