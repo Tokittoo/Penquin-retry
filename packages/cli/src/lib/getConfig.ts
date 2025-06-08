@@ -5,11 +5,11 @@ import path from 'path';
 export interface ProjectConfig {
   tsx: boolean;
   ts: boolean;
-  componentsPaths: {
+  paths: {
     ui: string;
     blocks: string;
+    snippets: string
   };
-  snippetsPath: string;
   alwaysForce: boolean;
   iconLibrary: string;
 }

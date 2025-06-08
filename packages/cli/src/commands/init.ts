@@ -5,7 +5,7 @@ import chalk from 'chalk'
 import { execa } from 'execa';
 import { getPackageManager } from '../lib/getPackagetManager.js';
 import { getSpinner } from '../lib/spinner.js';
-import { CN_FUNCTION_FILE_CONTENT, DEFAULT_CONFIG_FILE_CONTENT, INITIAL_REQUIRED_DEPENDENCIES } from '../constants/index.js';
+import { CN_FUNCTION_FILE_CONTENT, DEFAULT_CONFIG_FILE_CONTENT, GLOBAL_CSS_VARS, INITIAL_REQUIRED_DEPENDENCIES } from '../constants/index.js';
 
 export const init = new Command()
 .name('init')
@@ -30,6 +30,8 @@ export const init = new Command()
     fs.writeFileSync(configFilePath, DEFAULT_CONFIG_FILE_CONTENT);
 
     await addInitialSetup(cwd);
+
+    updateGlobalCSS(cwd);
 
     console.log(chalk.green('Config file created successfully'));
     
@@ -84,5 +86,31 @@ const addInitialSetup = async (cwd: string) => {
   } catch (error) {
     console.log('Error while Initializing the setup E:', (error as Error).message);
     throw error;
+  }
+}
+
+const updateGlobalCSS = (cwd: string) => {
+  const possiblePaths = [
+    'src/app/globals.css',
+    'src/styles/globals.css',
+    'styles/globals.css',
+    'globals.css'
+  ]
+
+  for(const relPath of possiblePaths) {
+    try {
+      const fullPath = path.join(cwd, relPath);
+      if(!fs.existsSync(fullPath)) continue;
+  
+      const existingContent = fs.readFileSync(fullPath, 'utf-8');
+  
+      const updatedContent = `${GLOBAL_CSS_VARS.trim()}\n\n${existingContent}`;
+      
+      fs.writeFileSync(fullPath, updatedContent);
+  
+      return;
+    } catch (error) {
+      console.log(chalk.red('Error occured while updating global css vars. You have add css vars yourself.'));
+    }
   }
 }

@@ -15,16 +15,17 @@ export interface RegistryItem {
   files: {
     path: string;
     type: 'registry:ui' | 'registry:block' | 'registry:snippet' | 'registry:file';
+    target?: string,
     content?: string
   }[];
 }
+
 
 interface Registry {
   title: string,
   description: string,
   items: RegistryItem[]
 }
-
 
 export const getRegistry = (): Registry => {
   const registryPath = path.resolve(__dirname, '../../../../registry.json');
