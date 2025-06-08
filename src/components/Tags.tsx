@@ -1,44 +1,28 @@
 'use client'
 
 import React from 'react'
-import { IconBrandFramerMotion, IconBrandNextjs, IconBrandReact, IconBrandTailwind } from '@tabler/icons-react'
 import { motion } from 'motion/react'
+import { cn } from '@/lib/utils'
 
 type ItemType = {
   name: string,
   logo: React.ReactNode
 }
 
-const items: ItemType[] = [
-  {
-    name: 'Next.js',
-    logo: <IconBrandNextjs size={28} />
-  },
-  {
-    name: 'React',
-    logo: <IconBrandReact size={28} />
-  },
-  {
-    name: 'Tailwind CSS',
-    logo: <IconBrandTailwind size={28} />
-  },
-  {
-    name: 'Motion',
-    logo: <IconBrandFramerMotion size={28} />
-  }
-]
-
-export const Tags = () => {
+const Tags = ({ overlap, children }: { overlap: boolean, children: React.ReactNode }) => {
   return (
-    <div className='flex'>
-      {
-        items.map(i => (
-          <TagItem item={i} key={i.name} />
-        ))
-      }
+    <div 
+      className='flex justify-center items-center'
+      style={{ 
+        '--tag-overlap': overlap ? '-0.2rem' : '0',
+      } as React.CSSProperties}
+    >
+      {children}
     </div>
   )
 }
+
+Tags.displayName = 'Tags'
 
 const TagItem = ({ item }: { item: ItemType }) => {
   return (
@@ -47,7 +31,10 @@ const TagItem = ({ item }: { item: ItemType }) => {
       whileHover={'animate'}
       whileTap={'animate'}
       initial={'initial'}
-      className='flex'
+      className={cn(
+        'flex cursor-pointer',
+        'mx-[var(--tag-overlap)]'
+      )}
     >
       <motion.div
         variants={{
@@ -79,3 +66,7 @@ const TagItem = ({ item }: { item: ItemType }) => {
     </motion.div>
   )
 }
+
+TagItem.displayName = 'TagItem'
+
+export { Tags, TagItem }
