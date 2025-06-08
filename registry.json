@@ -190,6 +190,24 @@
         "headline",
         "accordion"
       ]
+    },
+    {
+      "name": "api-resoponse-and-error",
+      "title": "Standard API Resoponse and Error",
+      "description": "Standard API Resoponse and Error snippet",
+      "type": "registry:snippet",
+      "files": [
+        {
+          "path": "registry/snippets/apiResponse.ts",
+          "type": "registry:snippet",
+          "target": "src/utils"
+        },
+        {
+          "path": "registry/snippets/apiError.ts",
+          "type": "registry:snippet",
+          "target": "src/utils"
+        }
+      ]
     }
   ]
 }

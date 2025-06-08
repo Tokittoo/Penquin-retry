@@ -3,12 +3,24 @@
   "title": "Vink CLI Component Registry",
   "type": "object",
   "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
     "items": {
       "type": "array",
-      "additionalProperties": {
+      "items": {
         "type": "object",
         "properties": {
           "name": {
+            "type": "string"
+          },
+          "title": {
             "type": "string"
           },
           "description": {
@@ -40,8 +52,17 @@
                 "path": {
                   "type": "string",
                   "description": "Path to the component directory"
+                },
+                "target": {
+                  "type": "string",
+                  "description": "Target path - where this file will be created in the users project"
                 }
-              }
+              },
+              "required": [
+                "path",
+                "type"
+              ],
+              "additionalProperties": false
             }
           },
           "dependencies": {
