@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { FaGithub, FaXTwitter } from 'react-icons/fa6'
+import { Button } from './ui/Btn'
 
 const footLinks = [
   {
@@ -71,9 +72,14 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className='flex justify-between max-md:mt-8'>
+      <div className='flex justify-between items-center max-md:mt-8'>
         <p className='text-muted-foreground text-sm'>&copy; 2025, All rights reserved.</p>
-        <div className='flex gap-2'>
+        <div className='flex items-center gap-2'>
+          <Button size={'small'} asChild className='text-xs my-4 md:mr-8'>
+            <Link href={'https://docs.google.com/forms/d/e/1FAIpQLSdW_VUC9xYiM3rSU78XUqEy1aauzOE6ooBbl4UEHCJY6b39GA/viewform?usp=dialog'} target={'_blank'}>
+              Submit Your Feedback
+            </Link>
+          </Button>
           <Link href={'https://github.com/M-SaaD-H/vink'} target={'_blank'} className='p-2 rounded-full cursor-pointer'><FaGithub size={18} /></Link>
           <Link href={'https://x.com/_MSaaDH'} target={'_blank'} className='p-2 rounded-full cursor-pointer'><FaXTwitter size={18} /></Link>
         </div>
