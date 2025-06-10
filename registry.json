@@ -228,6 +228,35 @@
       "devDependencies": [
         "@types/nodemailer"
       ]
+    },
+    {
+      "name": "express-setup",
+      "title": "Express Setup",
+      "description": "Express Setup with all the standard middleware and configurations",
+      "type": "registry:snippet",
+      "files": [
+        {
+          "path": "registry/backend-snippets/src/app.ts",
+          "type": "registry:snippet",
+          "target": "src"
+        },
+        {
+          "path": "registry/backend-snippets/src/index.ts",
+          "type": "registry:snippet",
+          "target": "src"
+        }
+      ],
+      "dependencies": [
+        "express",
+        "cors",
+        "cookie-parser",
+        "dotenv"
+      ],
+      "devDependencies": [
+        "@types/express",
+        "@types/cors",
+        "@types/cookie-parser"
+      ]
     }
   ]
 }
