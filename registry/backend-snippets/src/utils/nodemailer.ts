@@ -61,7 +61,7 @@ class EmailService {
     this.redirectURI = config.redirectURI || process.env.REDIRECT_URI || '';
     this.refreshToken = config.refreshToken || process.env.REFRESH_TOKEN || '';
     this.sendersAddress = config.sendersAddress || process.env.SENDERS_ADDRESS || '';
-    this.organizationName = config.organizationName || process.env.ORGANIZATION_NAME || ''; // or hard code here
+    this.organizationName = config.organizationName || process.env.ORGANIZATION_NAME || 'Vynk'; // or hard code here
 
     // Configuration
     this.minDelay = config.minDelay || 100;
