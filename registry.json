@@ -198,15 +198,35 @@
       "type": "registry:snippet",
       "files": [
         {
-          "path": "registry/snippets/standards/apiResponse.ts",
+          "path": "registry/backend-snippets/src/utils/apiResponse.ts",
           "type": "registry:snippet",
           "target": "src/utils"
         },
         {
-          "path": "registry/snippets/standards/apiError.ts",
+          "path": "registry/backend-snippets/src/utils/apiError.ts",
           "type": "registry:snippet",
           "target": "src/utils"
         }
+      ]
+    },
+    {
+      "name": "nodemailer-setup",
+      "title": "Advanced Nodemailer Setup",
+      "description": "Advanced Nodemailer Setup with rate limiting and retries accessibility",
+      "type": "registry:snippet",
+      "files": [
+        {
+          "path": "registry/backend-snippets/src/utils/nodemailer.ts",
+          "type": "registry:snippet",
+          "target": "src/utils"
+        }
+      ],
+      "dependencies": [
+        "nodemailer",
+        "googleapis"
+      ],
+      "devDependencies": [
+        "@types/nodemailer"
       ]
     }
   ]

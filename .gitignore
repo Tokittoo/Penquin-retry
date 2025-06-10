@@ -43,3 +43,5 @@ next-env.d.ts
 # vynk cli
 packages/cli/node_modules
 packages/cli/dist
+
+registry/backend-snippets/node_modules

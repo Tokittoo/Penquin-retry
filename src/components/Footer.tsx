@@ -47,7 +47,7 @@ const Footer = () => {
               alt='Logo'
               className='rounded-md invert dark:invert-0'
             />
-            <h2 className='text-2xl font-sans font-bold tracking-tight'>Vink</h2>
+            <h2 className='text-2xl font-sans font-bold tracking-tight'>Vynk</h2>
           </div>
           <p>A product by <Link className='underline hover:text-muted-foreground' href={'https://saad.works'} target={'_blank'}>Saad</Link></p>
         </div>
