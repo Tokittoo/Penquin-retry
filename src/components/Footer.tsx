@@ -50,7 +50,7 @@ const Footer = () => {
           </div>
           <p>A product by <Link className='underline hover:text-muted-foreground' href={'https://saad.works'} target={'_blank'}>Saad</Link></p>
         </div>
-        <div className='flex gap-8 md:my-12 md:mx-18'>
+        <div className='flex gap-28 md:gap-12 my-4 md:my-12 md:mx-18'>
           <ul>
             {
               footLinks.map(l => (
@@ -72,7 +72,7 @@ const Footer = () => {
         </div>
       </div>
       <div className='flex justify-between items-center max-md:mt-8'>
-        <p className='text-muted-foreground text-sm'>&copy; 2025, All rights reserved.</p>
+        <p className='text-muted-foreground text-sm'>&copy; {new Date().getFullYear()}, All rights reserved.</p>
         <div className='flex items-center gap-2'>
           <Link href={'https://github.com/M-SaaD-H/vink'} target={'_blank'} className='p-2 rounded-full cursor-pointer'><FaGithub size={18} /></Link>
           <Link href={'https://x.com/_MSaaDH'} target={'_blank'} className='p-2 rounded-full cursor-pointer'><FaXTwitter size={18} /></Link>

@@ -59,7 +59,7 @@ const TagItem = ({ item }: { item: ItemType }) => {
           damping: 20,
           mass: 0.5
         }}
-        className='overflow-hidden whitespace-nowrap font-sans'
+        className='overflow-hidden whitespace-nowrap font-sans text-inherit my-auto'
       >
         {item.name}
       </motion.div>

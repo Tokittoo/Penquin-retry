@@ -4,10 +4,44 @@ import { Button } from './ui/Btn'
 import { TagItem, Tags } from '@/components/Tags'
 import Link from 'next/link'
 import { IconBrandFramerMotion, IconBrandNextjs, IconBrandTailwind, IconBrandReact } from '@tabler/icons-react'
+import Badge from './Badge'
+import { motion } from 'motion/react'
 
 const Hero = () => {
+  const variant = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+      scale: 0.96,
+      filter: 'blur(10px)',
+      transition: {
+        duration: 0.3
+      }
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      filter: 'blur(0px)',
+      transition: {
+        duration: 0.3
+      }
+    }
+  }
+
   return (
-    <div className='p-8 relative w-full mask-y-from-70% mask-y-to-100%'>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{
+        visible: {
+          transition: {
+            staggerChildren: 0.2
+          }
+        }
+      }}
+      className='p-8 relative w-full mask-y-from-70% mask-y-to-100% md:min-h-[95vh] flex flex-col pt-20 md:pt-30 items-center'
+    >
       <div
         className={cn(
           'absolute inset-0 -z-50',
@@ -17,15 +51,19 @@ const Hero = () => {
         )}
       />
       <div className='pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black' />
-      <h1 className='mt-16 bg-clip-text text-transparent text-center py-2 relative z-20 font-bold font-sans tracking-tight text-4xl md:text-7xl bg-gradient-to-b from-neutral-900 to-neutral-600 dark:from-neutral-700 dark:to-white'>
+      <motion.div variants={variant}>
+        <Badge />
+      </motion.div>
+      <motion.h1 variants={variant} className='bg-clip-text text-transparent text-center py-2 relative z-20 font-bold font-sans tracking-tight text-4xl md:text-[5.5rem]/22 bg-gradient-to-b from-neutral-900 to-neutral-600 dark:from-neutral-700 dark:to-white'>
         Skip the Boring Stuff.<br />Build What Matters.
-      </h1>
-      <p className='mx-auto max-w-xl text-center text-muted-foreground md:text-base text-sm text-shadow-md/8'>Save hours on setup and structure. Vink gives you everything you need to build fast, clean, and consistent user interfaces — without the boilerplate.</p>
-      <div className='mx-auto w-max flex gap-2 mt-8'>
-        <Button asChild><Link href={'/docs/components'}>Get Started</Link></Button>
-        <Button variant={'outline'} className='bg-background' asChild><Link href={'/docs/blocks'}>Browse Blocks</Link></Button>
-      </div>
-      <div className='mx-auto my-12 w-max'>
+      </motion.h1>
+      <motion.p variants={variant} className='mx-auto max-w-xl text-center text-muted-foreground md:text-base text-sm'>
+        All your essentials components, blocks, and snippets — delivered in one CLI. One command, and you&apos;re shipping.
+      </motion.p>
+      <motion.div variants={variant} className='mx-auto w-max flex gap-2 mt-8'>
+        <Button asChild className='w-max mx-auto'><Link href={'/docs'}>Start Building</Link></Button>
+      </motion.div>
+      <motion.div variants={variant} className='mx-auto my-8 w-max'>
         <Tags overlap={true}>
           {
             techs.map(t => (
@@ -33,27 +71,27 @@ const Hero = () => {
             ))
           }
         </Tags>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 
 const techs = [
   {
     name: 'Next.js',
-    logo: <IconBrandNextjs size={28} />
+    logo: <IconBrandNextjs size={32} />
   },
   {
     name: 'React',
-    logo: <IconBrandReact size={28} />
+    logo: <IconBrandReact size={32} />
   },
   {
     name: 'Tailwind CSS',
-    logo: <IconBrandTailwind size={28} />
+    logo: <IconBrandTailwind size={32} />
   },
   {
     name: 'Motion',
-    logo: <IconBrandFramerMotion size={28} />
+    logo: <IconBrandFramerMotion size={32} />
   }
 ]
 
