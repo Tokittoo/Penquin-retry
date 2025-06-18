@@ -25,11 +25,11 @@ const footLinks = [
 const socialLinks = [
   {
     name: 'Twitter / X',
-    href: 'https://x.com/_MSaaDH'
+    href: 'https://x.com/xibhi'
   },
   {
     name: 'GitHub',
-    href: 'https://github.com/M-SaaD-H'
+    href: 'https://github.com/xibhi'
   }
 ]
 
@@ -40,15 +40,15 @@ const Footer = () => {
         <div className='flex flex-col gap-2'>
           <div className='flex gap-2 items-center'>
             <Image
-              src={'/logo.png'}
+              src={'/logo.jpg'}
               height={30}
               width={30}
               alt='Logo'
               className='rounded-md invert dark:invert-0'
             />
-            <h2 className='text-2xl font-sans font-bold tracking-tight'>Vynk</h2>
+            <h2 className='text-2xl font-sans font-bold tracking-tight'>Penquin</h2>
           </div>
-          <p>A product by <Link className='underline hover:text-muted-foreground' href={'https://saad.works'} target={'_blank'}>Saad</Link></p>
+          <p>A product by <Link className='underline hover:text-muted-foreground' href={'https://github.com/Tokittoo'} target={'_blank'}>Krish</Link></p>
         </div>
         <div className='flex gap-28 md:gap-12 my-4 md:my-12 md:mx-18'>
           <ul>
@@ -74,8 +74,8 @@ const Footer = () => {
       <div className='flex justify-between items-center max-md:mt-8'>
         <p className='text-muted-foreground text-sm'>&copy; {new Date().getFullYear()}, All rights reserved.</p>
         <div className='flex items-center gap-2'>
-          <Link href={'https://github.com/M-SaaD-H/vink'} target={'_blank'} className='p-2 rounded-full cursor-pointer'><FaGithub size={18} /></Link>
-          <Link href={'https://x.com/_MSaaDH'} target={'_blank'} className='p-2 rounded-full cursor-pointer'><FaXTwitter size={18} /></Link>
+          <Link href={'https://github.com/xibhi'} target={'_blank'} className='p-2 rounded-full cursor-pointer'><FaGithub size={18} /></Link>
+          <Link href={'https://x.com/xibhi'} target={'_blank'} className='p-2 rounded-full cursor-pointer'><FaXTwitter size={18} /></Link>
         </div>
       </div>
     </div>

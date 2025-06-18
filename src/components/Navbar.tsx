@@ -31,14 +31,14 @@ const Navbar = () => {
         <div className='flex'>
           <Link href={'/'} className='flex items-center gap-2'>
             <Image
-              src={'/logo.png'}
+              src={'/logo.jpg'}
               height={30}
               width={30}
               alt='Logo'
               // className='invert'
               className='rounded-md invert dark:invert-0'
             />
-            <h2 className='text-xl font-sans font-bold tracking-tight'>Vynk</h2>
+            <h2 className='text-xl font-sans font-bold tracking-tight'>Penquin</h2>
           </Link>
           <ul className='hidden md:flex items-center gap-2 mx-8'>
             {
@@ -52,8 +52,8 @@ const Navbar = () => {
         </div>
         <div className='flex items-center gap-2'>
           <LargeSearchToggle className='max-md:hidden bg-secondary/90 w-52 hover:text-white/80 hover:bg-secondary' />
-          <Link href={'https://github.com/M-SaaD-H/vynk'} target={'_blank'} className='p-2 rounded-full cursor-pointer'><FaGithub size={18} /></Link>
-          <Link href={'https://x.com/_MSaaDH'} target={'_blank'} className='p-2 rounded-full cursor-pointer'><FaXTwitter size={18} /></Link>
+          <Link href={'https://github.com/xibhi'} target={'_blank'} className='p-2 rounded-full cursor-pointer'><FaGithub size={18} /></Link>
+          <Link href={'https://x.com/xibhi'} target={'_blank'} className='p-2 rounded-full cursor-pointer'><FaXTwitter size={18} /></Link>
           <DarkModeToggle />
         </div>
       </div>

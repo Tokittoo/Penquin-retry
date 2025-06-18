@@ -39,23 +39,23 @@ const Features = () => {
 
 const features = [
   {
-    title: 'Production-Ready Components',
-    description: 'Instantly integrate polished UI components with zero configuration — just plug and play.',
+    title: 'Must-Have Browser Extensions:',
+    description: 'Enhance efficiency with critical security tools at your fingertips. Handpicked extensions for passive scanning, request tampering, and vulnerability detection — integrated seamlessly into your browser.',
     className: 'md:col-span-2'
   },
   {
-    title: 'Intuitive Building Blocks',
-    description: 'Effortlessly assemble layouts with our drag-and-drop system — transform hours of work into minutes.',
+    title: 'Reconnaissance Templates :',
+    description: 'Structured workflows for subdomain enumeration, endpoint discovery, and vulnerability scanning to ensure nothing gets missed.',
     className: 'md:col-span-1'
   },
   {
-    title: 'Intelligent Code Snippets',
-    description: 'Use proven code patterns to build faster — innovate, don\'t reinvent.',
+    title: 'Ready-to-Use Command Templates:',
+    description: 'Save time with pre-built commands for scanning, exploitation, and automation.',
     className: 'md:col-span-1'
   },
   {
-    title: 'Enterprise-Grade Templates',
-    description: 'Launch faster with professionally designed templates — ready to customize and deploy.',
+    title: ' In-Depth Security Writeups:',
+    description: 'Learn from real-world exploits and refine your approach. Curated breakdowns of past bug bounty successes, attack patterns, and methodology deep dives to sharpen your skills.',
     className: 'md:col-span-2'
   }
 ]

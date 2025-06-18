@@ -17,10 +17,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Vynk",
-  description: "Build what matters",
+  title: "Penquin",
+  description: "",
   icons: {
-    icon: '/logo.png'
+    icon: '/logo.jpg'
   }
 };
 
