@@ -11,16 +11,8 @@ const navItems = [
     href: '/docs'
   },
   {
-    name: 'Components',
-    href: '/docs/components'
-  },
-  {
-    name: 'Blocks',
-    href: '/docs/blocks'
-  },
-  {
-    name: 'Snippets',
-    href: '/docs/snippets'
+    name: 'Bug Hunting',
+    href: '/docs/bug-hunting-toolkit'
   }
 ]
 
