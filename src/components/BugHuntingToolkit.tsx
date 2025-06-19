@@ -1,15 +1,19 @@
-
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 
 export const BugHuntingToolkit = () => {
   const [domain, setDomain] = useState('example.com')
   const [notification, setNotification] = useState('')
   const [showNotification, setShowNotification] = useState(false)
 
+  // Define type for commands
+  type CommandDictionary = {
+    [key: string]: string
+  }
+
   // Store original commands as templates
-  const commandTemplates = {
+  const commandTemplates: CommandDictionary = {
     'subfinder-basic': 'subfinder -d example.com -all -recursive > subdomain.txt',
     'httpx-filter': 'cat subdomain.txt | httpx-toolkit -ports 80,443,8080,8000,8888 -threads 200 > subdomains_alive.txt',
     'subzy-check': 'subzy run --targets subdomains.txt --concurrency 100 --hide_fails --verify_ssl',
@@ -26,10 +30,10 @@ export const BugHuntingToolkit = () => {
     'wpscan': 'wpscan --url https://example.com --disable-tls-checks --api-token YOUR_TOKEN -e at -e ap -e u --enumerate ap --plugins-detection aggressive --force'
   }
 
-  const [commands, setCommands] = useState(commandTemplates)
+  const [commands, setCommands] = useState<CommandDictionary>(commandTemplates)
 
-  const updateCommands = (newDomain: string) => {
-    const updatedCommands = {}
+  const updateCommands = useCallback((newDomain: string) => {
+    const updatedCommands: CommandDictionary = {}
     for (const [id, template] of Object.entries(commandTemplates)) {
       updatedCommands[id] = template
         .replace(/example\.com/g, newDomain)
@@ -37,7 +41,7 @@ export const BugHuntingToolkit = () => {
         .replace(/target\.com/g, newDomain)
     }
     setCommands(updatedCommands)
-  }
+  }, [commandTemplates])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
