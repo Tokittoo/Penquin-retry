@@ -1,7 +1,6 @@
 import React from 'react'
 import DarkModeToggle from './DarkModeToggle'
 import Image from 'next/image'
-import { LargeSearchToggle } from 'fumadocs-ui/components/layout/search-toggle'
 import Link from 'next/link'
 import { FaGithub, FaXTwitter } from 'react-icons/fa6';
 
@@ -43,7 +42,6 @@ const Navbar = () => {
           </ul>
         </div>
         <div className='flex items-center gap-2'>
-          <LargeSearchToggle className='max-md:hidden bg-secondary/90 w-52 hover:text-white/80 hover:bg-secondary' />
           <Link href={'https://github.com/xibhi'} target={'_blank'} className='p-2 rounded-full cursor-pointer'><FaGithub size={18} /></Link>
           <Link href={'https://x.com/xibhi'} target={'_blank'} className='p-2 rounded-full cursor-pointer'><FaXTwitter size={18} /></Link>
           <DarkModeToggle />

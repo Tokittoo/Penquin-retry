@@ -1,35 +1,34 @@
 'use client'
 
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
+
+// Define type for commands
+type CommandDictionary = {
+  [key: string]: string
+}
+
+// Store original commands as templates (moved outside component to prevent recreation)
+const commandTemplates: CommandDictionary = {
+  'subfinder-basic': 'subfinder -d example.com -all -recursive > subdomain.txt',
+  'httpx-filter': 'cat subdomain.txt | httpx-toolkit -ports 80,443,8080,8000,8888 -threads 200 > subdomains_alive.txt',
+  'subzy-check': 'subzy run --targets subdomains.txt --concurrency 100 --hide_fails --verify_ssl',
+  'katana-passive': 'katana -u subdomains_alive.txt -d 5 -ps -pss waybackarchive,commoncrawl,alienvault -kf -jc -fx -ef woff,css,png,svg,jpg,woff2,jpeg,gif,svg -o allurls.txt',
+  'advanced-urls': 'echo example.com | katana -d 5 -ps -pss waybackarchive,commoncrawl,alienvault -f qurl | urldedupe >output.txt\nkatana -u https://example.com -d 5 | grep \'=\' | urldedupe | anew output.txt\ncat output.txt | sed \'s/=.*/=/\' >final.txt',
+  'gau-urls': 'echo example.com | gau --mc 200 | urldedupe >urls.txt\ncat urls.txt | grep -E ".php|.asp|.aspx|.jspx|.jsp" | grep \'=\' | sort > output.txt\ncat output.txt | sed \'s/=.*/=/\' >final.txt',
+  'sensitive-files': 'cat allurls.txt | grep -E "\\.xls|\\.xml|\\.xlsx|\\.json|\\.pdf|\\.sql|\\.doc|\\.docx|\\.pptx|\\.txt|\\.zip|\\.tar\\.gz|\\.tgz|\\.bak|\\.7z|\\.rar|\\.log|\\.cache|\\.secret|\\.db|\\.backup|\\.yml|\\.gz|\\.config|\\.csv|\\.yaml|\\.md|\\.md5"',
+  'info-dork': 'site:*.example.com (ext:doc OR ext:docx OR ext:odt OR ext:pdf OR ext:rtf OR ext:ppt OR ext:pptx OR ext:csv OR ext:xls OR ext:xlsx OR ext:txt OR ext:xml OR ext:json OR ext:zip OR ext:rar OR ext:md OR ext:log OR ext:bak OR ext:conf OR ext:sql)',
+  'git-detection': 'cat domains.txt | grep "SUCCESS" | gf urls | httpx-toolkit -sc -server -cl -path "/.git/" -mc 200 -location -ms "Index of" -probe',
+  'xss-pipeline': 'echo https://example.com/ | gau | gf xss | uro | Gxss | kxss | tee xss_output.txt',
+  'dalfox-xss': 'cat xss_params.txt | dalfox pipe --blind https://your-collaborator-url --waf-bypass --silence',
+  'lfi-method': 'echo "https://example.com/" | gau | gf lfi | uro | sed \'s/=.*/=/\' | qsreplace "FUZZ" | sort -u | xargs -I{} ffuf -u {} -w payloads/lfi.txt -c -mr "root:(x|\\*|\\$[^\\:]*):0:0:" -v',
+  'cors-check': 'curl -H "Origin: http://example.com" -I https://example.com/wp-json/',
+  'wpscan': 'wpscan --url https://example.com --disable-tls-checks --api-token YOUR_TOKEN -e at -e ap -e u --enumerate ap --plugins-detection aggressive --force'
+}
 
 export const BugHuntingToolkit = () => {
   const [domain, setDomain] = useState('example.com')
   const [notification, setNotification] = useState('')
   const [showNotification, setShowNotification] = useState(false)
-
-  // Define type for commands
-  type CommandDictionary = {
-    [key: string]: string
-  }
-
-  // Store original commands as templates
-  const commandTemplates: CommandDictionary = {
-    'subfinder-basic': 'subfinder -d example.com -all -recursive > subdomain.txt',
-    'httpx-filter': 'cat subdomain.txt | httpx-toolkit -ports 80,443,8080,8000,8888 -threads 200 > subdomains_alive.txt',
-    'subzy-check': 'subzy run --targets subdomains.txt --concurrency 100 --hide_fails --verify_ssl',
-    'katana-passive': 'katana -u subdomains_alive.txt -d 5 -ps -pss waybackarchive,commoncrawl,alienvault -kf -jc -fx -ef woff,css,png,svg,jpg,woff2,jpeg,gif,svg -o allurls.txt',
-    'advanced-urls': 'echo example.com | katana -d 5 -ps -pss waybackarchive,commoncrawl,alienvault -f qurl | urldedupe >output.txt\nkatana -u https://example.com -d 5 | grep \'=\' | urldedupe | anew output.txt\ncat output.txt | sed \'s/=.*/=/\' >final.txt',
-    'gau-urls': 'echo example.com | gau --mc 200 | urldedupe >urls.txt\ncat urls.txt | grep -E ".php|.asp|.aspx|.jspx|.jsp" | grep \'=\' | sort > output.txt\ncat output.txt | sed \'s/=.*/=/\' >final.txt',
-    'sensitive-files': 'cat allurls.txt | grep -E "\\.xls|\\.xml|\\.xlsx|\\.json|\\.pdf|\\.sql|\\.doc|\\.docx|\\.pptx|\\.txt|\\.zip|\\.tar\\.gz|\\.tgz|\\.bak|\\.7z|\\.rar|\\.log|\\.cache|\\.secret|\\.db|\\.backup|\\.yml|\\.gz|\\.config|\\.csv|\\.yaml|\\.md|\\.md5"',
-    'info-dork': 'site:*.example.com (ext:doc OR ext:docx OR ext:odt OR ext:pdf OR ext:rtf OR ext:ppt OR ext:pptx OR ext:csv OR ext:xls OR ext:xlsx OR ext:txt OR ext:xml OR ext:json OR ext:zip OR ext:rar OR ext:md OR ext:log OR ext:bak OR ext:conf OR ext:sql)',
-    'git-detection': 'cat domains.txt | grep "SUCCESS" | gf urls | httpx-toolkit -sc -server -cl -path "/.git/" -mc 200 -location -ms "Index of" -probe',
-    'xss-pipeline': 'echo https://example.com/ | gau | gf xss | uro | Gxss | kxss | tee xss_output.txt',
-    'dalfox-xss': 'cat xss_params.txt | dalfox pipe --blind https://your-collaborator-url --waf-bypass --silence',
-    'lfi-method': 'echo "https://example.com/" | gau | gf lfi | uro | sed \'s/=.*/=/\' | qsreplace "FUZZ" | sort -u | xargs -I{} ffuf -u {} -w payloads/lfi.txt -c -mr "root:(x|\\*|\\$[^\\:]*):0:0:" -v',
-    'cors-check': 'curl -H "Origin: http://example.com" -I https://example.com/wp-json/',
-    'wpscan': 'wpscan --url https://example.com --disable-tls-checks --api-token YOUR_TOKEN -e at -e ap -e u --enumerate ap --plugins-detection aggressive --force'
-  }
-
   const [commands, setCommands] = useState<CommandDictionary>(commandTemplates)
 
   const updateCommands = useCallback((newDomain: string) => {
@@ -41,7 +40,7 @@ export const BugHuntingToolkit = () => {
         .replace(/target\.com/g, newDomain)
     }
     setCommands(updatedCommands)
-  }, [commandTemplates])
+  }, [])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -66,10 +65,6 @@ export const BugHuntingToolkit = () => {
     setTimeout(() => setShowNotification(false), 2000)
   }
 
-  useEffect(() => {
-    updateCommands('example.com')
-  }, [updateCommands])
-
   const ToolCard = ({ title, description, commandId, multiline = false }: {
     title: string
     description: string
@@ -90,9 +85,9 @@ export const BugHuntingToolkit = () => {
         </button>
       </div>
       <p className="text-sm text-muted-foreground mb-3">{description}</p>
-      <div className="bg-muted rounded p-3 font-mono text-sm">
+      <div className="bg-muted rounded p-3 font-mono text-sm overflow-x-auto">
         <span className="text-green-400">$ </span>
-        <span className={multiline ? "whitespace-pre-line" : ""}>{commands[commandId]}</span>
+        <span className={multiline ? "whitespace-pre-line break-words" : "break-all"}>{commands[commandId]}</span>
       </div>
     </div>
   )
