@@ -33,6 +33,44 @@ export const init = new Command()
 
     updateGlobalCSS(cwd);
 
+    spinner.succeed('Vynk initialized successfully!');
+  } catch (error) {
+    spinner.fail('Failed to initialize Vynk');
+    console.error(error);
+    process.exit(1);
+  }
+});
+
+async function addInitialSetup(cwd: string) {
+  const packageManager = getPackageManager();
+  
+  // Install required dependencies
+  await execa(packageManager, ['install', ...INITIAL_REQUIRED_DEPENDENCIES], { cwd });
+  
+  // Create utils directory if it doesn't exist
+  const utilsDir = path.join(cwd, 'src', 'lib');
+  if (!fs.existsSync(utilsDir)) {
+    fs.mkdirSync(utilsDir, { recursive: true });
+  }
+  
+  // Create cn utility function
+  const cnFilePath = path.join(utilsDir, 'utils.ts');
+  if (!fs.existsSync(cnFilePath)) {
+    fs.writeFileSync(cnFilePath, CN_FUNCTION_FILE_CONTENT);
+  }
+}
+
+function updateGlobalCSS(cwd: string) {
+  const globalCSSPath = path.join(cwd, 'src', 'app', 'globals.css');
+  
+  if (fs.existsSync(globalCSSPath)) {
+    const existingContent = fs.readFileSync(globalCSSPath, 'utf-8');
+    if (!existingContent.includes('@layer base')) {
+      fs.appendFileSync(globalCSSPath, '\n' + GLOBAL_CSS_VARS);
+    }
+  }
+}wd);
+
     console.log(chalk.green('Config file created successfully'));
     
     spinner.succeed('Vynk initialized successfully.');

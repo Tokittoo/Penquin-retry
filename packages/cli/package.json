@@ -13,7 +13,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "node dist/index.js"
+    "dev": "tsx watch src/index.ts",
+    "prepublishOnly": "npm run build"
   },
   "author": "Saad",
   "license": "ISC",
@@ -30,5 +31,8 @@
     "@types/prompts": "^2.4.9",
     "tsx": "^4.7.1",
     "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
   }
 }
