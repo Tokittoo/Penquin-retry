@@ -51,12 +51,12 @@ export const BugHuntingToolkit = () => {
     try {
       await navigator.clipboard.writeText(commandText)
       showNotificationMessage('Command copied to clipboard!')
-    } catch (err) {
-      showNotificationMessage('Failed to copy command', true)
+    } catch {
+      showNotificationMessage('Failed to copy command')
     }
   }
 
-  const showNotificationMessage = (message: string, isError = false) => {
+  const showNotificationMessage = (message: string) => {
     setNotification(message)
     setShowNotification(true)
     setTimeout(() => setShowNotification(false), 2000)
@@ -64,7 +64,7 @@ export const BugHuntingToolkit = () => {
 
   useEffect(() => {
     updateCommands('example.com')
-  }, [])
+  }, [updateCommands])
 
   const ToolCard = ({ title, description, commandId, multiline = false }: {
     title: string

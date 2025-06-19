@@ -237,7 +237,7 @@ export const BugHuntingWriteups = () => {
       <div className="text-center mt-12 p-6 border-t border-border">
         <h3 className="text-lg font-semibold mb-2">Want to contribute?</h3>
         <p className="text-sm text-muted-foreground">
-          Have a writeup you'd like to share? These articles represent proven methodologies and real-world discoveries
+          Have a writeup you&apos;d like to share? These articles represent proven methodologies and real-world discoveries
           that can help the security community learn and grow.
         </p>
       </div>
