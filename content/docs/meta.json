@@ -4,11 +4,9 @@
   "pages": [
     "---Getting Started---",
     "...(getting-started)",
-    "---Components---",
-    "...components",
-    "---Blocks---",
-    "...blocks",
-    "---Snippets---",
-    "...snippets"
+    "---Bug Hunting Toolkit---",
+    "...bug-hunting-toolkit",
+    "extensions",
+    "writeups"
   ]
 }
