@@ -46,3 +46,4 @@ packages/cli/dist
 
 registry/backend-snippets/node_modules
 registry/backend-snippets/dist
+.env
