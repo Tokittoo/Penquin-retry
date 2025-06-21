@@ -4,6 +4,7 @@ import { Button } from './ui/Btn'
 import { TagItem, Tags } from '@/components/Tags'
 import Link from 'next/link'
 import { IconBrandFramerMotion, IconBrandNextjs, IconBrandTailwind, IconBrandReact } from '@tabler/icons-react'
+import Badge from './Badge'
 import { motion } from 'motion/react'
 
 const Hero = () => {
@@ -50,11 +51,15 @@ const Hero = () => {
         )}
       />
       <div className='pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black' />
+      <motion.div variants={variant}>
+        <Badge />
+      </motion.div>
+      <div className='pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black' />
       <motion.h1 variants={variant} className='bg-clip-text text-transparent text-center py-2 relative z-20 font-bold font-sans tracking-tight text-4xl md:text-[5.5rem]/22 bg-gradient-to-b from-neutral-900 to-neutral-600 dark:from-neutral-700 dark:to-white'>
-        Turn Vulnerabilities into Cash<br />The Penquin Helps You Claim More Bounties.
+        Cut the Clutter.<br />Command. Exploit. Repeat.
       </motion.h1>
       <motion.p variants={variant} className='mx-auto max-w-xl text-center text-muted-foreground md:text-base text-sm'>
-        Supercharge your bug bounty workflow with an all-in-one toolkit: pre-built commands, optimized workflows, and expert-curated resources — hack smarter, not harder.
+        Supercharge your bug bounty workflow: pre-built commands, optimized workflows, and expert-curated resources — hack smarter, not harder.
       </motion.p>
       <motion.div variants={variant} className='mx-auto w-max flex gap-2 mt-8'>
         <Button asChild className='w-max mx-auto'><Link href={'https://github.com/xibhi/penquin'}>View on GitHub</Link></Button>
