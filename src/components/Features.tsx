@@ -39,23 +39,23 @@ const Features = () => {
 
 const features = [
   {
-    title: 'Must-Have Browser Extensions:',
-    description: 'Enhance efficiency with critical security tools at your fingertips. Handpicked extensions for passive scanning, request tampering, and vulnerability detection — integrated seamlessly into your browser.',
+    title: 'Browser Tools, Built for Security',
+    description: 'Critical security extensions for passive scanning, request tampering, and vulnerability detection — seamlessly integrated.',
     className: 'md:col-span-2'
   },
   {
-    title: 'Reconnaissance Templates :',
-    description: 'Structured workflows for subdomain enumeration, endpoint discovery, and vulnerability scanning to ensure nothing gets missed.',
+    title: 'Structured Recon, Zero Fluff',
+    description: 'Structured workflows for subdomain enumeration, endpoint discovery, and vulnerability scanning.',
     className: 'md:col-span-1'
   },
   {
-    title: 'Ready-to-Use Command Templates:',
-    description: 'Save time with pre-built commands for scanning, exploitation, and automation.',
+    title: 'Commands. Ready. Go',
+    description: 'Pre-built commands for scanning, exploitation, and automation — save time, execute faster.',
     className: 'md:col-span-1'
   },
   {
-    title: ' In-Depth Security Writeups:',
-    description: 'Learn from real-world exploits and refine your approach. Curated breakdowns of past bug bounty successes, attack patterns, and methodology deep dives to sharpen your skills.',
+    title: 'Hacker Insights, Curated',
+    description: 'Learn from real-world exploits, bug bounty successes, and attack patterns to sharpen your skills.',
     className: 'md:col-span-2'
   }
 ]
